@@ -1,0 +1,35 @@
+{
+  "name": "npmwebchat",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "botframework-webchat": "file:external/botframework-webchat-4.5.4-master-86064-86714de.tgz",
+    "botframework-webchat-component": "file:external/botframework-webchat-component-4.5.4-master-86064-86714de.tgz",
+    "botframework-webchat-core": "file:external/botframework-webchat-core-4.5.4-master-86064-86714de.tgz",
+    "memoize-one": "^5.1.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
