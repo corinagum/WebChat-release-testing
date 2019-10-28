@@ -27,6 +27,7 @@
   </head>
 
   <body>
+    <div id="test"></div>
     <div id="webchat" role="main"></div>
     <script type="text/babel">
       function createFetchSpeechServicesCredentials() {
@@ -51,6 +52,7 @@
       async function fetchSpeechServicesToken() {
         return (await fetchSpeechServicesCredentials()).token;
       }
+
       (async function() {
         // In this demo, we are using Direct Line token from MockBot.
         // Your client code must provide either a secret or a token to talk to your bot.
@@ -81,6 +83,22 @@
 
         document.querySelector("#webchat > *").focus();
       })().catch(err => console.error(err));
+
+      (async function() {
+        const Test = () => {
+          function testHooks() {
+            const { useState } = window.React;
+
+            const [age, setAge] = useState(42);
+            console.log(age);
+          }
+
+          testHooks();
+          return <span></span>;
+        };
+
+        window.ReactDOM.render(<Test />, document.getElementById("test"));
+      })();
     </script>
   </body>
 </html>
