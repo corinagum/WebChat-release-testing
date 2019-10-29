@@ -4,71 +4,51 @@
     <title>Web Chat: Full-featured bundle with ES5 polyfills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://unpkg.com/@babel/standalone@7.6.2/babel.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+    <script src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
     <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/browse/react-app-polyfill@1.0.4/stable.js"></script>
-    <script src="https://unpkg.com/browse/react-app-polyfill@1.0.4/ie11.js"></script>
 
+    <script src="../react-app-polyfill-umd/dist/react-app-polyfill.ie11.production.min.js"></script>
     <script src="../webchat-es5.js"></script>
+
     <style>
       html,
-      body {
-        height: 100%;
-      }
-      body {
-        margin: 0;
-      }
-
+      body,
       #webchat {
         height: 100%;
-        width: 100%;
+      }
+
+      body {
+        margin: 0;
       }
     </style>
   </head>
   <body>
-    <div id="test"></div>
     <div id="webchat" role="main"></div>
-    <script>
-      console.log(41);
-      window
-        .fetch("https://webchat-mockbot.azurewebsites.net/directline/token", {
-          method: "POST"
-        })
-        .then(function(res) {
-          return res.json();
-        })
-        .then(function(json) {
-          const token = json.token;
+    <script type="text/babel" data-presets="es2015,react,stage-3">
+      const { React, ReactDOM, WebChat } = window;
+      const { createDirectLine, ReactWebChat } = WebChat;
+      const { useMemo } = React;
 
-          window.WebChat.renderWebChat(
-            {
-              directLine: window.WebChat.createDirectLine({
-                token: token
-              })
-            },
-            document.getElementById("webchat")
+      async function main() {
+        const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
+        const { token } = await res.json();
+
+        const App = () => {
+          const directLine = useMemo(() => createDirectLine({ token }));
+
+          return (
+            <ReactWebChat
+              directLine={directLine}
+            />
           );
+        };
 
-          document.querySelector("#webchat > *").focus();
-        });
-    </script>
-
-    <script type="text/babel">
-      const num = 42;
-
-      function testHooks() {
-        console.log(num);
+        ReactDOM.render(<App />, document.getElementById('webchat'));
       }
 
-      function Test() {
-        window.React.useEffect(() => {
-          testHooks();
-        }, []);
-        return <span></span>;
-      }
-
-      window.ReactDOM.render(<Test />, document.getElementById("test"));
+      main().catch(err => console.error(err));
     </script>
   </body>
 </html>
