@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Babel with React bundle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+    <script src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
+    <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+
+    <script src="../webchat-es5.js"></script>
+
+    <style>
+      html,
+      body,
+      #webchat {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="webchat" role="main"></div>
+    <script type="text/babel" data-presets="es2015,react,stage-3">
+      const {
+        React: {
+          useEffect
+        },
+        ReactDOM,
+        WebChat: {
+          createCognitiveServicesSpeechServicesPonyfillFactory,
+          createDirectLine,
+          ReactWebChat
+        }
+      } = window;
+
+      function createFetchSpeechServicesCredentials() {
+        let expireAfter = 0;
+        let resultPromise;
+
+        return () => {
+          if (!resultPromise || Date.now() > expireAfter) {
+            expireAfter = Date.now() + 5000;
+            resultPromise = fetch(
+              'https://webchat-mockbot.azurewebsites.net/speechservices/token',
+              { method: 'POST' }
+            ).then(res => res.json()).catch(err => {
+              expireAfter = 0;
+              resultPromise = null;
+
+              return Promise.reject(err);
+            });
+          }
+
+          return resultPromise;
+        };
+      }
+
+      const fetchSpeechServicesCredentials = createFetchSpeechServicesCredentials();
+
+      async function fetchSpeechServicesRegion() {
+        return (await fetchSpeechServicesCredentials()).region;
+      }
+
+      async function fetchSpeechServicesToken() {
+        return (await fetchSpeechServicesCredentials()).token;
+      }
+
+      async function main() {
+        const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
+        const { token } = await res.json();
+        const directLine = createDirectLine({ token });
+
+        // Create Web Speech ponyfill if the browser support WebRTC
+        const webSpeechPonyfillFactory = window.navigator.mediaDevices && await createCognitiveServicesSpeechServicesPonyfillFactory({
+          authorizationToken: fetchSpeechServicesToken,
+          region: await fetchSpeechServicesRegion()
+        });
+
+        const App = () => {
+          useEffect(() => console.log('Rendering Web Chat using ES5 bundle.'));
+
+          return (
+            <ReactWebChat
+              directLine={directLine}
+              // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
+              locale="en-US"
+              webSpeechPonyfillFactory={webSpeechPonyfillFactory}
+            />
+          );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('webchat'));
+      }
+
+      main().catch(err => console.error(err));
+    </script>
+  </body>
+</html>
