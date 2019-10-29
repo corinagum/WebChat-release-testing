@@ -27,9 +27,16 @@
   <body>
     <div id="webchat" role="main"></div>
     <script type="text/babel" data-presets="es2015,react,stage-3">
-      const { React, ReactDOM, WebChat } = window;
-      const { createDirectLine, ReactWebChat } = WebChat;
-      const { useMemo } = React;
+      const {
+        React: {
+          useMemo
+        },
+        ReactDOM,
+        WebChat: {
+          createDirectLine,
+          ReactWebChat
+        }
+      } = window;
 
       async function main() {
         const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
