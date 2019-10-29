@@ -29,25 +29,68 @@
     <script type="text/babel" data-presets="es2015,react,stage-3">
       const {
         React: {
-          useMemo
+          useEffect
         },
         ReactDOM,
         WebChat: {
+          createCognitiveServicesSpeechServicesPonyfillFactory,
           createDirectLine,
           ReactWebChat
         }
       } = window;
 
+      function createFetchSpeechServicesCredentials() {
+        let expireAfter = 0;
+        let resultPromise;
+
+        return () => {
+          if (!resultPromise || Date.now() > expireAfter) {
+            expireAfter = Date.now() + 5000;
+            resultPromise = fetch(
+              'https://webchat-mockbot.azurewebsites.net/speechservices/token',
+              { method: 'POST' }
+            ).then(res => res.json()).catch(err => {
+              expireAfter = 0;
+              resultPromise = null;
+
+              return Promise.reject(err);
+            });
+          }
+
+          return resultPromise;
+        };
+      }
+
+      const fetchSpeechServicesCredentials = createFetchSpeechServicesCredentials();
+
+      async function fetchSpeechServicesRegion() {
+        return (await fetchSpeechServicesCredentials()).region;
+      }
+
+      async function fetchSpeechServicesToken() {
+        return (await fetchSpeechServicesCredentials()).token;
+      }
+
       async function main() {
         const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
         const { token } = await res.json();
+        const directLine = createDirectLine({ token });
+
+        // Create Web Speech ponyfill if the browser support WebRTC
+        const webSpeechPonyfillFactory = window.navigator.mediaDevices && await createCognitiveServicesSpeechServicesPonyfillFactory({
+          authorizationToken: fetchSpeechServicesToken,
+          region: await fetchSpeechServicesRegion()
+        });
 
         const App = () => {
-          const directLine = useMemo(() => createDirectLine({ token }));
+          useEffect(() => console.log('Rendering Web Chat using ES5 bundle.'));
 
           return (
             <ReactWebChat
               directLine={directLine}
+              // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
+              locale="en-US"
+              webSpeechPonyfillFactory={webSpeechPonyfillFactory}
             />
           );
         };
