@@ -40,14 +40,16 @@
           if (!resultPromise || Date.now() > expireAfter) {
             expireAfter = Date.now() + 5000;
             resultPromise = fetch(
-              'https://webchat-mockbot.azurewebsites.net/speechservices/token',
-              { method: 'POST' }
-            ).then(res => res.json()).catch(err => {
-              expireAfter = 0;
-              resultPromise = null;
+              "https://webchat-mockbot.azurewebsites.net/speechservices/token",
+              { method: "POST" }
+            )
+              .then(res => res.json())
+              .catch(err => {
+                expireAfter = 0;
+                resultPromise = null;
 
-              return Promise.reject(err);
-            });
+                return Promise.reject(err);
+              });
           }
 
           return resultPromise;
@@ -65,24 +67,29 @@
       }
 
       async function main() {
-        const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
+        const res = await fetch(
+          "https://webchat-mockbot.azurewebsites.net/directline/token",
+          { method: "POST" }
+        );
         const { token } = await res.json();
         const directLine = createDirectLine({ token });
 
         // Create Web Speech ponyfill if the browser support WebRTC
-        const webSpeechPonyfillFactory = window.navigator.mediaDevices && await createCognitiveServicesSpeechServicesPonyfillFactory({
-          authorizationToken: fetchSpeechServicesToken,
-          region: await fetchSpeechServicesRegion()
-        });
+        const webSpeechPonyfillFactory =
+          window.navigator.mediaDevices &&
+          (await createCognitiveServicesSpeechServicesPonyfillFactory({
+            authorizationToken: fetchSpeechServicesToken,
+            region: await fetchSpeechServicesRegion()
+          }));
 
         renderWebChat(
           {
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
-            locale: 'en-US',
+            locale: "en-US",
             webSpeechPonyfillFactory
           },
-          document.getElementById('webchat')
+          document.getElementById("webchat")
         );
       }
 
