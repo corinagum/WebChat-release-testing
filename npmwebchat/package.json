@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "botframework-webchat": "file:external/botframework-webchat-4.5.4-master-86064-86714de.tgz",
-    "botframework-webchat-component": "file:external/botframework-webchat-component-4.5.4-master-86064-86714de.tgz",
-    "botframework-webchat-core": "file:external/botframework-webchat-core-4.5.4-master-86064-86714de.tgz",
+    "botframework-webchat": "file:external/botframework-webchat-4.5.4-55dee85.tgz",
+    "botframework-webchat-component": "file:external/botframework-webchat-component-4.5.4-55dee85.tgz",
+    "botframework-webchat-core": "file:external/botframework-webchat-core-4.5.4-55dee85.tgz",
     "memoize-one": "^5.1.1",
     "react": "^16.11.0",
+    "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
   },
