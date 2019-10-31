@@ -71,6 +71,7 @@ export default function App() {
     !!speechPonyfillFactory && (
       <ReactWebChat
         directLine={directLine}
+        locale="en-US"
         webSpeechPonyfillFactory={speechPonyfillFactory}
       />
     )
