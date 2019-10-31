@@ -27,23 +27,27 @@ Formalized directions for testing Web Chat for pre- and post-release.
 - Edge
 - Firefox
 - Internet Explorer (`renderWebChat es5.js` only)
+- Safari (Mac and iOS)
 
 ## Everything is built, what bot commands do I need to test?
 
 - 'Hello world'
 - Adaptive Cards
-- Speech: 'Testing 1 2 3'
+- Speech: 'Input hint expecting'
+  - Should re-open mic
+  - Speech from bot will be interrupted via keyboard input
+  - Speech from bot will be interrupted if mic button is pressed
 
 ## Hosting page scenarios
 
 We assume the hosting page has 4 ways to load Web Chat
 
 - Without React
-   - Pure JavaScript: use `renderWebChat()`
+  - Pure JavaScript: use `renderWebChat()`
 - With React
-   - Babel
-      - Use `renderWebChat()`
-      - Use JSX `<ReactWebChat>`
-   - `create-react-app`: use JSX `<ReactWebChat>`
-   
+  - Babel
+    - Use `renderWebChat()`
+    - Use JSX `<ReactWebChat>`
+  - `create-react-app`: use JSX `<ReactWebChat>`
+
 On the React route, we assume the hosting page might call React Hooks. We need to verify Web Chat will not violate any rules of hooks. Thus, we do not have a scenario which use React without Babel. Because without Babel, we cannot verify React Hooks.

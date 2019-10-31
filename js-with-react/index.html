@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>JavaScript without React bundle</title>
+    <title>JS w/ React</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
     <script src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
+    <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
 
     <script src="../webchat-es5.js"></script>
 
@@ -23,8 +25,10 @@
   </head>
   <body>
     <div id="webchat" role="main"></div>
-    <script type="text/babel" data-presets="es2015,stage-3">
+    <script type="text/babel" data-presets="es2015,react,stage-3">
       const {
+        React: { useEffect },
+        ReactDOM,
         WebChat: {
           createCognitiveServicesSpeechServicesPonyfillFactory,
           createDirectLine,
@@ -66,6 +70,13 @@
         return (await fetchSpeechServicesCredentials()).token;
       }
 
+      // We are using an activity middleware to add React Hooks for testing
+      const ActivityContainer = props => {
+        useEffect(() => console.log("Rendering activity"));
+
+        return props.children;
+      };
+
       async function main() {
         const res = await fetch(
           "https://webchat-mockbot.azurewebsites.net/directline/token",
@@ -84,6 +95,9 @@
 
         renderWebChat(
           {
+            activityMiddleware: () => next => card => children => (
+              <ActivityContainer>{next(card)(children)}</ActivityContainer>
+            ),
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: "en-US",

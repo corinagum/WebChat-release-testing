@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Babel with React bundle</title>
+    <title>Babel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
@@ -10,7 +10,6 @@
     <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
 
     <script src="../webchat-es5.js"></script>
-
     <style>
       html,
       body,
@@ -27,9 +26,7 @@
     <div id="webchat" role="main"></div>
     <script type="text/babel" data-presets="es2015,react,stage-3">
       const {
-        React: {
-          useEffect
-        },
+        React: { useEffect },
         ReactDOM,
         WebChat: {
           createCognitiveServicesSpeechServicesPonyfillFactory,
@@ -46,14 +43,16 @@
           if (!resultPromise || Date.now() > expireAfter) {
             expireAfter = Date.now() + 5000;
             resultPromise = fetch(
-              'https://webchat-mockbot.azurewebsites.net/speechservices/token',
-              { method: 'POST' }
-            ).then(res => res.json()).catch(err => {
-              expireAfter = 0;
-              resultPromise = null;
+              "https://webchat-mockbot.azurewebsites.net/speechservices/token",
+              { method: "POST" }
+            )
+              .then(res => res.json())
+              .catch(err => {
+                expireAfter = 0;
+                resultPromise = null;
 
-              return Promise.reject(err);
-            });
+                return Promise.reject(err);
+              });
           }
 
           return resultPromise;
@@ -71,30 +70,35 @@
       }
 
       async function main() {
-        const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
+        const res = await fetch(
+          "https://webchat-mockbot.azurewebsites.net/directline/token",
+          { method: "POST" }
+        );
         const { token } = await res.json();
         const directLine = createDirectLine({ token });
 
-        // Create Web Speech ponyfill if the browser support WebRTC
-        const webSpeechPonyfillFactory = window.navigator.mediaDevices && await createCognitiveServicesSpeechServicesPonyfillFactory({
-          authorizationToken: fetchSpeechServicesToken,
-          region: await fetchSpeechServicesRegion()
-        });
+        // Create Web Speech ponyfill if the browser supports WebRTC
+        const webSpeechPonyfillFactory =
+          window.navigator.mediaDevices &&
+          (await createCognitiveServicesSpeechServicesPonyfillFactory({
+            authorizationToken: fetchSpeechServicesToken,
+            region: await fetchSpeechServicesRegion()
+          }));
 
         const App = () => {
-          useEffect(() => console.log('Rendering Web Chat using ES5 bundle.'));
+          useEffect(() => console.log("Rendering Web Chat using ES5 bundle."));
 
           return (
             <ReactWebChat
               directLine={directLine}
-              // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
+              // Firefox defaults language to "en", which is not supported by Cognitive Services, so we need to specify it as "en-US"
               locale="en-US"
               webSpeechPonyfillFactory={webSpeechPonyfillFactory}
             />
           );
         };
 
-        ReactDOM.render(<App />, document.getElementById('webchat'));
+        ReactDOM.render(<App />, document.getElementById("webchat"));
       }
 
       main().catch(err => console.error(err));
