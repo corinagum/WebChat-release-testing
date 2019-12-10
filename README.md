@@ -9,7 +9,8 @@ Formalized directions for testing Web Chat for pre- and post-release.
 1. Navigate to [VSTS Web Chat daily builds](https://fuselabs.visualstudio.com/BotFramework-WebChat/_build?definitionId=498)
 1. Queue a new daily build (upper right corner)
 1. Once the build finishes, click the Artifacts button (upper right corner)
-1. Download the cdn_files and tgzfiles
+1. ~Download the cdn_files and tgzfiles~ Build tgz files locally. For testing speech, we must make manual changes to directlinespeech/package.json
+1. Pack tgz for speech, directlinespeech, core, component and botframework-webchat. Move to `npmwebchat` folder
 1. Extract into the root folder:
    - `webchat.js`
    - `webchat-es5.js`
@@ -18,6 +19,7 @@ Formalized directions for testing Web Chat for pre- and post-release.
 1. Add `webchat.js` to ReactWebChat
 1. Move to npmwebchat directory
 1. Delete Web Chat and directlinespeech dependencies from `package.json`
+1. `npm i microsoft-cognitiveservices-speech-sdk` package, but make sure `directlinespeech` is not using an external `.tgz`
 1. `npm i botframework-directlinespeech-sdk....tgz`
 1. `npm i botframework-webchat...core....tgz`
 1. `npm i botframework-webchat...component....tgz`
