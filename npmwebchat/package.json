@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "botframework-directlinespeech-sdk": "file:botframework-directlinespeech-sdk-4.6.1.tgz",
+    "botframework-webchat": "file:botframework-webchat-4.6.1.tgz",
     "botframework-webchat-component": "file:botframework-webchat-component-4.6.1.tgz",
     "botframework-webchat-core": "file:botframework-webchat-core-4.6.1.tgz",
     "memoize-one": "^5.1.1",
+    "microsoft-cognitiveservices-speech-sdk": "file:microsoft-cognitiveservices-speech-sdk-1.8.1.tgz",
     "react": "^16.11.0",
     "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.11.0",
