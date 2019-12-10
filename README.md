@@ -17,6 +17,8 @@ Formalized directions for testing Web Chat for pre- and post-release.
 1. Add both `.js` files to `renderWebChat`
 1. Add `webchat.js` to ReactWebChat
 1. Move to npmwebchat directory
+1. Delete Web Chat and directlinespeech dependencies from `package.json`
+1. `npm i botframework-directlinespeech-sdk....tgz`
 1. `npm i botframework-webchat...core....tgz`
 1. `npm i botframework-webchat...component....tgz`
 1. `npm i botframework-webchat...tgz` (no suffix)
