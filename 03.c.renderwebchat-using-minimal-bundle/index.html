@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
 
-    <script src="../webchat-es5.js"></script>
+    <script src="../webchat-minimal.js"></script>
 
     <style>
       html,
@@ -197,9 +197,6 @@
 
         renderWebChat(
           {
-            activityMiddleware: () => next => card => children => (
-              <ActivityContainer>{next(card)(children)}</ActivityContainer>
-            ),
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: "en-US",

@@ -183,6 +183,9 @@
 
         renderWebChat(
           {
+            activityMiddleware: () => next => card => children => (
+              <ActivityContainer>{next(card)(children)}</ActivityContainer>
+            ),
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: "en-US",
