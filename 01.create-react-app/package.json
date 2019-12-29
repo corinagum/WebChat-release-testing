@@ -1,6 +1,7 @@
 {
   "name": "npmwebchat",
   "version": "0.1.0",
+  "homepage": "/01.create-react-app/build/",
   "private": true,
   "dependencies": {
     "memoize-one": "^5.1.1",
