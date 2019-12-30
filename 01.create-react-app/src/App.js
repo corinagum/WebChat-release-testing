@@ -69,11 +69,13 @@ export default function App() {
   return (
     !!directLine &&
     !!speechPonyfillFactory && (
-      <ReactWebChat
-        directLine={directLine}
-        locale="en-US"
-        webSpeechPonyfillFactory={speechPonyfillFactory}
-      />
+      <div id="webchat">
+        <ReactWebChat
+          directLine={directLine}
+          locale="en-US"
+          webSpeechPonyfillFactory={speechPonyfillFactory}
+        />
+      </div>
     )
   );
 }

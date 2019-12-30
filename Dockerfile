@@ -9,12 +9,12 @@ RUN apk update && \
 ADD . /var/build/
 
 WORKDIR /var/build/
-RUN cp drops/webchat-es5.js /var/build/02.babel-standalone/ && \
-    cp drops/webchat-es5.js /var/build/03.a.renderwebchat-using-es5-bundle/ && \
-    cp drops/webchat.js /var/build/03.b.renderwebchat-using-full-bundle/ && \
-    cp drops/webchat-minimal.js /var/build/03.c.renderwebchat-using-minimal-bundle/ && \
-    cp drops/webchat-es5.js /var/build/04.renderwebchat-with-react/ && \
-    cp drops/webchat-es5.js /var/build/05.renderwebchat-with-directlinespeech/
+# RUN cp drops/webchat-es5.js /var/build/02.babel-standalone/ && \
+#     cp drops/webchat-es5.js /var/build/03.a.renderwebchat-using-es5-bundle/ && \
+#     cp drops/webchat.js /var/build/03.b.renderwebchat-using-full-bundle/ && \
+#     cp drops/webchat-minimal.js /var/build/03.c.renderwebchat-using-minimal-bundle/ && \
+#     cp drops/webchat-es5.js /var/build/04.renderwebchat-with-react/ && \
+#     cp drops/webchat-es5.js /var/build/05.renderwebchat-with-directlinespeech/
 
 WORKDIR /var/build/01.create-react-app/
 RUN npm ci && \

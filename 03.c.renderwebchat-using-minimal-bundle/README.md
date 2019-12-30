@@ -4,7 +4,6 @@
    - Chrome, Edge UWP, Firefox, Safari on Mac
 - All modern mobile browsers
    - Safari on iOS, Chrome on Android
-- Internet Explorer 11
 
 ## Steps to test
 
