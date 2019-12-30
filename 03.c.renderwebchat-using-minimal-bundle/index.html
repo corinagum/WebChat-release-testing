@@ -4,24 +4,19 @@
     <title>JS w/ React</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
-    <script src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
-    <script src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/whatwg-fetch"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>
+
+    <link href="../common/cheatSheet.css" rel="stylesheet" />
+    <link href="../common/markdown.css" rel="stylesheet" />
+    <link href="../common/webchat.css" rel="stylesheet" />
+    <script src="../common/renderCheatSheet.js" type="text/babel"></script>
 
     <script src="webchat-minimal.js"></script>
-
-    <style>
-      html,
-      body,
-      #webchat {
-        height: 100%;
-      }
-
-      body {
-        margin: 0;
-      }
-    </style>
   </head>
   <body>
     <div id="webchat" role="main"></div>
