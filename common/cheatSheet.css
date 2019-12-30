@@ -42,12 +42,12 @@
 }
 
 #cheat-sheet .markdown :not(pre) > code {
-  background-color: #555;
-  outline-color: #555;
+  background-color: #444;
+  outline-color: #444;
 }
 
 .markdown pre {
-  background-color: #555;
+  background-color: #444;
 }
 
 #cheat-sheet > div {
