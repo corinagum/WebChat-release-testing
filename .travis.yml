@@ -13,7 +13,7 @@ before_deploy:
 deploy:
 - provider: pages
   github_token: $GITHUB_TOKEN
-  local_dir: /var/artifacts/gh-pages
+  local_dir: artifacts/gh-pages
   on:
     branch: feat-restructure
   skip_cleanup: true
