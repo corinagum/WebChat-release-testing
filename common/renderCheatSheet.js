@@ -17,7 +17,7 @@ function buildVersionTable() {
     '{CONTENT}',
     [].map
       .call(document.querySelectorAll('head meta[name^="bot"]'), meta => {
-        return `| \`${meta.name}\` | \`${meta.content}\` |`;
+        return `| ${meta.name} | ${meta.content} |`;
       })
       .join('\n')
   );

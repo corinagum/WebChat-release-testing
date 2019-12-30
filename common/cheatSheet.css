@@ -41,6 +41,15 @@
   color: Black;
 }
 
+#cheat-sheet .markdown :not(pre) > code {
+  background-color: #555;
+  outline-color: #555;
+}
+
+.markdown pre {
+  background-color: #555;
+}
+
 #cheat-sheet > div {
   -ms-overflow-style: none;
   height: calc(100% - 2em);
