@@ -17,8 +17,7 @@ RUN cp drops/webchat-es5.js /var/build/02.babel-standalone/ && \
     cp drops/webchat-es5.js /var/build/05.renderwebchat-with-directlinespeech/
 
 WORKDIR /var/build/01.create-react-app/
-RUN npm install -g serve && \
-    npm ci && \
+RUN npm ci && \
     npm install ../drops/botframework-directlinespeech-sdk-$TARGET_VERSION.tgz && \
     npm install ../drops/botframework-webchat-core-$TARGET_VERSION.tgz && \
     npm install ../drops/botframework-webchat-component-$TARGET_VERSION.tgz && \
@@ -32,4 +31,5 @@ RUN mkdir /var/artifacts && \
     rsync -av 01.create-react-app/build/ /var/artifacts/gh-pages/01.create-react-app/
 
 WORKDIR /var/artifacts/gh-pages/
+RUN npm install -g serve
 ENTRYPOINT npx --no-install serve -p 80

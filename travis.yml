@@ -1,0 +1,17 @@
+language: minimal
+
+services:
+- docker
+
+install:
+- docker build . -t release-image
+
+before_deploy:
+- docker create --name release release-image
+- docker cp release:/var/artifacts artifacts
+
+deploy:
+- provider: pages
+  github_token: $GITHUB_TOKEN
+  local_dir: /var/artifacts/gh-pages
+  skip_cleanup: true
