@@ -11,7 +11,7 @@ This version table is generated from \`<meta>\` tags.
 function buildVersionTable() {
   return VERSION_TABLE_TEMPLATE.replace('{CONTENT}', [].map.call(
     document.querySelectorAll('head meta[name^="bot"]'),
-    function (meta) {
+    meta => {
       return `| \`${meta.name}\` | \`${meta.content}\` |`;
     }
   ).join('\n'));
