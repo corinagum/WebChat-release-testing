@@ -23,91 +23,91 @@
     <script type="text/babel" data-presets="es2015,react,stage-3">
       const store = window.WebChat.createStore();
       const commands = [
-        "card bingsports",
-        "card breakfast",
-        "card broken:lang",
-        "card broken",
-        "card flight",
-        "card flighttracking",
-        "card inputs",
-        "card ol",
-        "card markdown",
-        "card reminder",
-        "card restaurant",
-        "card review",
-        "card richmessage",
-        "card simple",
-        "card sportsclub",
-        "card ul",
-        "card weather",
-        "animationcard",
-        "audio",
-        "audiocard",
-        "card-actions",
-        "carousel",
-        "channel-data",
-        "document-data-uri",
-        "document-plain",
-        "document-word",
-        "dump-activity",
-        "echo Hello world",
-        "emptycard",
-        "file",
-        "herocard",
-        "herocard long title",
-        "image",
-        "image-svg",
-        "input-hint accepting",
-        "input-hint expecting",
-        "input-hint ignoring",
-        "invalidCard",
-        "layout single",
-        "layout single carousel",
-        "layout double",
-        "layout carousel",
-        "layout",
-        "localization",
-        "markdown",
-        "content-multimedia",
-        "oauth",
-        "oauth signout",
-        "proactive",
-        "receiptcard",
-        "sample:backchannel",
-        "sample:github-repository",
-        "sample:password-input",
-        "sample:redux-middleware",
-        "signin",
-        "slow",
-        "speech",
-        "tell me a story",
-        "suggested-actions",
-        "text",
-        "thumbnailcard",
-        "thumbnailcard long title",
-        "timestamp grouping",
-        "typing",
-        "typing 1",
-        "unknown activity",
-        "unknown attachment",
-        "upload",
-        "user",
-        "user id",
-        "user name",
-        "video",
-        "video vimeo",
-        "video youtube",
-        "videocard",
-        "xml"
+        'card bingsports',
+        'card breakfast',
+        'card broken:lang',
+        'card broken',
+        'card flight',
+        'card flighttracking',
+        'card inputs',
+        'card ol',
+        'card markdown',
+        'card reminder',
+        'card restaurant',
+        'card review',
+        'card richmessage',
+        'card simple',
+        'card sportsclub',
+        'card ul',
+        'card weather',
+        'animationcard',
+        'audio',
+        'audiocard',
+        'card-actions',
+        'carousel',
+        'channel-data',
+        'document-data-uri',
+        'document-plain',
+        'document-word',
+        'dump-activity',
+        'echo Hello world',
+        'emptycard',
+        'file',
+        'herocard',
+        'herocard long title',
+        'image',
+        'image-svg',
+        'input-hint accepting',
+        'input-hint expecting',
+        'input-hint ignoring',
+        'invalidCard',
+        'layout single',
+        'layout single carousel',
+        'layout double',
+        'layout carousel',
+        'layout',
+        'localization',
+        'markdown',
+        'content-multimedia',
+        'oauth',
+        'oauth signout',
+        'proactive',
+        'receiptcard',
+        'sample:backchannel',
+        'sample:github-repository',
+        'sample:password-input',
+        'sample:redux-middleware',
+        'signin',
+        'slow',
+        'speech',
+        'tell me a story',
+        'suggested-actions',
+        'text',
+        'thumbnailcard',
+        'thumbnailcard long title',
+        'timestamp grouping',
+        'typing',
+        'typing 1',
+        'unknown activity',
+        'unknown attachment',
+        'upload',
+        'user',
+        'user id',
+        'user name',
+        'video',
+        'video vimeo',
+        'video youtube',
+        'videocard',
+        'xml'
       ];
       function runCommands(commands, dispatch) {
         if (!commands.length) {
           return;
         }
-        console.log("Running command " + commands[0]);
+        console.log('Running command ' + commands[0]);
         const text = commands.shift();
         dispatch({
-          type: "WEB_CHAT/SEND_MESSAGE",
+          type: 'WEB_CHAT/SEND_MESSAGE',
           payload: {
             text
           }
@@ -123,11 +123,7 @@
       const {
         React: { useEffect },
         ReactDOM,
-        WebChat: {
-          createCognitiveServicesSpeechServicesPonyfillFactory,
-          createDirectLine,
-          ReactWebChat
-        }
+        WebChat: { createCognitiveServicesSpeechServicesPonyfillFactory, createDirectLine, ReactWebChat }
       } = window;
 
       function createFetchSpeechServicesCredentials() {
@@ -137,10 +133,7 @@
         return () => {
           if (!resultPromise || Date.now() > expireAfter) {
             expireAfter = Date.now() + 5000;
-            resultPromise = fetch(
-              "https://webchat-mockbot.azurewebsites.net/speechservices/token",
-              { method: "POST" }
-            )
+            resultPromise = fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', { method: 'POST' })
               .then(res => res.json())
               .catch(err => {
                 expireAfter = 0;
@@ -165,10 +158,7 @@
       }
 
       async function main() {
-        const res = await fetch(
-          "https://webchat-mockbot.azurewebsites.net/directline/token",
-          { method: "POST" }
-        );
+        const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
         const { token } = await res.json();
         const directLine = createDirectLine({ token });
 
@@ -182,7 +172,7 @@
 
         const App = () => {
           useEffect(() => {
-            console.log("Rendering Web Chat using ES5 bundle.");
+            console.log('Rendering Web Chat using ES5 bundle.');
             runCommands(commands, store.dispatch);
           });
           return (
@@ -196,7 +186,7 @@
           );
         };
 
-        ReactDOM.render(<App />, document.getElementById("webchat"));
+        ReactDOM.render(<App />, document.getElementById('webchat'));
       }
 
       main().catch(err => console.error(err));

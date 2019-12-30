@@ -6,15 +6,17 @@ This table is generated from \`<meta>\` tags.
 | Name | Version |
 | - | - |
 {CONTENT}
-`
+`;
 
 function buildVersionTable() {
-  return VERSION_TABLE_TEMPLATE.replace('{CONTENT}', [].map.call(
-    document.querySelectorAll('head meta[name^="bot"]'),
-    meta => {
-      return `| \`${meta.name}\` | \`${meta.content}\` |`;
-    }
-  ).join('\n'));
+  return VERSION_TABLE_TEMPLATE.replace(
+    '{CONTENT}',
+    [].map
+      .call(document.querySelectorAll('head meta[name^="bot"]'), meta => {
+        return `| \`${meta.name}\` | \`${meta.content}\` |`;
+      })
+      .join('\n')
+  );
 }
 
 (async () => {
