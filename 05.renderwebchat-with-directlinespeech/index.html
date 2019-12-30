@@ -4,8 +4,14 @@
     <title>Direct Line Speech w/o React</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="https://unpkg.com/babel-standalone@6/babel.js"></script>
-    <script src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/babel-standalone@6/babel.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/whatwg-fetch"></script>
+
+    <link href="../common/cheatSheet.css" rel="stylesheet" />
+    <link href="../common/markdown.css" rel="stylesheet" />
+    <script src="../common/renderCheatSheet.js" type="text/babel"></script>
 
     <script src="webchat-es5.js"></script>
 
@@ -17,7 +23,14 @@
       }
 
       body {
+        background-color: #EEE;
         margin: 0;
+      }
+
+      #webchat {
+        box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        min-width: 360px;
+        max-width: 480px;
       }
     </style>
   </head>
