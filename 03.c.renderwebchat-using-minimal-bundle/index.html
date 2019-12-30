@@ -22,17 +22,19 @@
     <script type="text/babel" data-presets="es2015,stage-3">
       const { fetchDirectLineToken } = window.createFetchTokens();
       const {
-        WebChat: { createDirectLine, renderWebChat }
+        WebChat: { createDirectLine, createStore, renderWebChat }
       } = window;
 
       async function main() {
         const directLine = createDirectLine({ token: await fetchDirectLineToken() });
+        const store = window.webChatStore = createStore();
 
         renderWebChat(
           {
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
-            locale: 'en-US'
+            locale: 'en-US',
+            store
           },
           document.getElementById('webchat')
         );

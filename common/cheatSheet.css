@@ -19,6 +19,28 @@
   top: 10px;
 }
 
+#cheat-sheet .markdown button {
+  appearance: none;
+  background: none;
+  border: solid 2px #CCC;
+  color: #EEE;
+  font-family: inherit;
+  font-size: inherit;
+  outline: 0;
+  padding: .4em .6em;
+}
+
+#cheat-sheet .markdown button:active {
+  background: #999;
+  border-color: #999;
+  color: Black;
+}
+
+#cheat-sheet .markdown button:hover:not(:active) {
+  background: #CCC;
+  color: Black;
+}
+
 #cheat-sheet > div {
   -ms-overflow-style: none;
   height: calc(100% - 2em);

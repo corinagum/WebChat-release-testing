@@ -22,11 +22,12 @@
     <script type="text/babel" data-presets="es2015,stage-3">
       const { fetchDirectLineToken, fetchSpeechServicesRegion, fetchSpeechServicesToken } = window.createFetchTokens();
       const {
-        WebChat: { createCognitiveServicesSpeechServicesPonyfillFactory, createDirectLine, renderWebChat }
+        WebChat: { createCognitiveServicesSpeechServicesPonyfillFactory, createDirectLine, createStore, renderWebChat }
       } = window;
 
       async function main() {
         const directLine = createDirectLine({ token: await fetchDirectLineToken() });
+        const store = window.webChatStore = createStore();
 
         // Create Web Speech ponyfill if the browser support WebRTC
         const webSpeechPonyfillFactory =
@@ -41,6 +42,7 @@
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: 'en-US',
+            store,
             webSpeechPonyfillFactory
           },
           document.getElementById('webchat')

@@ -22,17 +22,19 @@
     <script type="text/babel" data-presets="es2015,stage-3">
       const { fetchDirectLineSpeechCredentials } = window.createFetchTokens();
       const {
-        WebChat: { createDirectLineSpeechAdapters, renderWebChat }
+        WebChat: { createDirectLineSpeechAdapters, createStore, renderWebChat }
       } = window;
 
       async function main() {
         const adapters = await createDirectLineSpeechAdapters({ fetchCredentials: fetchDirectLineSpeechCredentials });
+        const store = window.webChatStore = createStore();
 
         renderWebChat(
           {
             ...adapters,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
-            locale: 'en-US'
+            locale: 'en-US',
+            store
           },
           document.getElementById('webchat')
         );
