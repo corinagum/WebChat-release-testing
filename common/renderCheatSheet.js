@@ -1,7 +1,7 @@
 const VERSION_TABLE_TEMPLATE = `
 ## Versions
 
-This version table is generated from \`<meta>\` tags.
+This table is generated from \`<meta>\` tags.
 
 | Name | Version |
 | - | - |
@@ -29,6 +29,7 @@ function buildVersionTable() {
 
   container.appendChild(content);
   container.id = 'cheat-sheet';
+  container.setAttribute('aria-hidden', 'true');
 
   document.body.appendChild(container);
 })().catch(err => console.error(err));
