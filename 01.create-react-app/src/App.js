@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from 'react';
 
 import ReactWebChat, {
   createCognitiveServicesSpeechServicesPonyfillFactory,
-  createDirectLine
-} from "botframework-webchat";
+  createDirectLine,
+  createStore
+} from 'botframework-webchat';
 
 function createFetchSpeechServicesCredentials() {
   let expireAfter = 0;
@@ -11,10 +12,9 @@ function createFetchSpeechServicesCredentials() {
 
   return async () => {
     if (Date.now() > expireAfter) {
-      const speechServicesTokenRes = await fetch(
-        "https://webchat-mockbot.azurewebsites.net/speechservices/token",
-        { method: "POST" }
-      );
+      const speechServicesTokenRes = await fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', {
+        method: 'POST'
+      });
 
       lastResult = await speechServicesTokenRes.json();
       expireAfter = Date.now() + 300000;
@@ -35,17 +35,19 @@ async function fetchSpeechServicesToken() {
 }
 
 export default function App() {
+  const [store] = useState(() => createStore());
   const [directLine, setDirectLine] = useState();
   const [speechPonyfillFactory, setSpeechPonyfillFactory] = useState();
 
   useEffect(() => {
+    window.webChatStore = store;
+  }, []);
+
+  useEffect(() => {
     (async () => {
-      const res = await fetch(
-        "https://webchat-mockbot.azurewebsites.net/directline/token",
-        {
-          method: "POST"
-        }
-      );
+      const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', {
+        method: 'POST'
+      });
 
       const { token } = await res.json();
 
@@ -55,12 +57,10 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const ponyfillFactory = await createCognitiveServicesSpeechServicesPonyfillFactory(
-        {
-          authorizationToken: fetchSpeechServicesToken,
-          region: await fetchSpeechServicesRegion()
-        }
-      );
+      const ponyfillFactory = await createCognitiveServicesSpeechServicesPonyfillFactory({
+        authorizationToken: fetchSpeechServicesToken,
+        region: await fetchSpeechServicesRegion()
+      });
 
       setSpeechPonyfillFactory(() => ponyfillFactory);
     })();
@@ -69,11 +69,14 @@ export default function App() {
   return (
     !!directLine &&
     !!speechPonyfillFactory && (
-      <ReactWebChat
-        directLine={directLine}
-        locale="en-US"
-        webSpeechPonyfillFactory={speechPonyfillFactory}
-      />
+      <div id="webchat">
+        <ReactWebChat
+          directLine={directLine}
+          locale="en-US"
+          store={store}
+          webSpeechPonyfillFactory={speechPonyfillFactory}
+        />
+      </div>
     )
   );
 }
