@@ -26,7 +26,8 @@ Formalized directions for testing Web Chat for pre- and post-release.
 ## Browsers, which?
 
 - Chrome
-- Edge
+- Edge Anaheim
+- Edge UWP
 - Firefox
 - Internet Explorer (`renderWebChat es5.js`)
 - Safari (Mac)
