@@ -7,15 +7,14 @@ Formalized directions for testing Web Chat for pre- and post-release.
 ## Do what?
 
 1. Navigate to [VSTS Web Chat daily builds](https://fuselabs.visualstudio.com/BotFramework-WebChat/_build?definitionId=498)
-1. Queue a new daily build (upper right corner)
-1. Once the build finishes, click the Artifacts button (upper right corner)
-1. Download the `cdn_files` and `tgzfiles` .zip folders
-1. Extract into the root folder:
-   - `webchat.js`
-   - `webchat-es5.js`
-1. Into `npmwebchat`:
-   - `.tgz` files
-1. Move to npmwebchat directory
+   1. Queue a new daily build (upper right corner)
+   1. Once the build finishes, click the Artifacts button (upper right corner)
+   1. Download the `cdn_files` and `tgzfiles` .zip folders
+   1. (These directions are old; VSTS UI changed)
+1. Extract into the drop folder:
+   - All files from `cdn_folder` except those ending in `*.LICENSE` and `*.json`
+   - All `tgz` files
+1. Move to 01.create-react-app directory
 1. Delete Web Chat and directlinespeech dependencies from `package.json`
 1. `npm i microsoft-cognitiveservices-speech-sdk` package, but make sure `directlinespeech` is not using an external `.tgz`
 1. `npm i botframework-directlinespeech-sdk....tgz`
@@ -24,6 +23,8 @@ Formalized directions for testing Web Chat for pre- and post-release.
 1. `npm i botframework-webchat...tgz` (no suffix)
 
 ## Browsers, which?
+
+https://1drv.ms/x/s!Aqv30r9qhHTIdWWqWl6egBqgaRk?e=F7jp1n
 
 - Chrome
 - Edge Anaheim
@@ -36,16 +37,8 @@ Formalized directions for testing Web Chat for pre- and post-release.
 
 ## Commands, test?
 
-- 'Hello world'
-- Adaptive Cards
-- Speech: 'Input hint expecting'
-  - Should re-open mic
-  - Speech from bot will be interrupted via keyboard input
-  - Speech from bot will be interrupted if mic button is pressed
-- Run through all Mock Bot commands
-
-  - To do it automatically:
-
+- Use the 'Run all tests' button
+   it runs this:
   ```
   const commands = [
   'card bingsports',
