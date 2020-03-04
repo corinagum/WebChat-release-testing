@@ -42,7 +42,7 @@
         await window.WebChat.renderCheatsheet();
 
         renderWebChat(
-          window.WebChat.customizations.patchProps({
+          await window.WebChat.customizations.patchProps({
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: 'en-US',

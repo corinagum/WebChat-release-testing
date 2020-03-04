@@ -51,7 +51,7 @@
         };
 
         renderWebChat(
-          window.WebChat.customizations.patchProps({
+          await window.WebChat.customizations.patchProps({
             activityMiddleware: () => next => card => children => (
               <ActivityContainer>{next(card)(children)}</ActivityContainer>
             ),

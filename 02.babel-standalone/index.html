@@ -46,16 +46,17 @@
         await window.WebChat.loadCustomization();
         await window.WebChat.renderCheatsheet();
 
+        const props = await window.WebChat.customizations.patchProps({
+          directLine,
+          // Firefox defaults language to "en", which is not supported by Cognitive Services, so we need to specify it as "en-US"
+          locale: 'en-US',
+          store,
+          webSpeechPonyfillFactory
+        });
+
         const App = () => {
           // We want to make sure we didn't break React hooks in hosting apps
           useEffect(() => {});
-          const props = window.WebChat.customizations.patchProps({
-            directLine,
-            // Firefox defaults language to "en", which is not supported by Cognitive Services, so we need to specify it as "en-US"
-            locale: 'en-US',
-            store,
-            webSpeechPonyfillFactory
-          });
 
           return <ReactWebChat {...props} />;
         };
