@@ -21,17 +21,16 @@ async function loadCustomization() {
   await loadScript(`../common/customizations/${customizationName}.js`);
 }
 
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
+async function loadScript(src) {
+  const res = await fetch(src);
 
-    script.addEventListener('error', ({ error }) => reject(error));
-    script.addEventListener('load', () => resolve());
-    script.setAttribute('async', 'async');
-    script.setAttribute('src', src);
+  if (!res.ok) {
+    throw new Error(`Server returned ${res.status} while fetching JavaScript file.`);
+  }
 
-    document.head.appendChild(script);
-  });
+  const code = await res.text();
+
+  eval(Babel.transform(code, { presets: ['es2015', 'stage-3'] }).code);
 }
 
 window.WebChat || (window.WebChat = {});

@@ -1,4 +1,4 @@
-# Steps for right-to-left
+## Steps for right-to-left
 
 1. Type `carousel` to display a carousel
    - The carousel should start from far right
