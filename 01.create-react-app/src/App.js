@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ReactWebChat, {
   createCognitiveServicesSpeechServicesPonyfillFactory,
@@ -41,7 +41,7 @@ export default function App() {
 
   useEffect(() => {
     window.webChatStore = store;
-  }, []);
+  }, [store]);
 
   useEffect(() => {
     (async () => {
