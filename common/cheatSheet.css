@@ -48,8 +48,9 @@
   outline-color: #444;
 }
 
-.markdown pre {
+#cheat-sheet .markdown pre {
   background-color: #444;
+  color: #CCC;
 }
 
 #cheat-sheet > div {
