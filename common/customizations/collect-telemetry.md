@@ -5,7 +5,7 @@
    -  Make sure an event measurement is logged in the console
    -  `event` measurement
       ```
-        {
+      {
         "name": "init",
         "dimensions": {
           "prop:locale": "en-US",
@@ -20,7 +20,7 @@
    -  Make sure a series of timing measurement and an event measurement is logged in the console
    -  `timingstart` measurement
       ```
-        {
+      {
         "name": "sendFiles:makeThumbnail",
         "dimensions": {
           "prop:locale": "en-US",
@@ -32,7 +32,7 @@
       ```
    -  `timingend` measurement
       ```
-        {
+      {
         "name": "sendFiles:makeThumbnail",
         "dimensions": {
           "prop:locale": "en-US",
@@ -45,7 +45,7 @@
       ```
    -  `event` measurement
       ```
-        {
+      {
         "name": "sendFiles",
         "data": {
           "numFiles": 1,
