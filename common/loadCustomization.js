@@ -22,7 +22,7 @@ async function loadCustomization() {
 }
 
 async function loadScript(src) {
-  const res = await fetch(src);
+  const res = await fetch(`${src}?_=${Date.now()}`);
 
   if (!res.ok) {
     throw new Error(`Server returned ${res.status} while fetching JavaScript file.`);

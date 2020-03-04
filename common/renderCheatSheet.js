@@ -120,7 +120,7 @@ async function sendAllCommands() {
 }
 
 async function fetchMarkdown(url) {
-  const res = await fetch(url);
+  const res = await fetch(`${url}?_=${Date.now()}`);
 
   if (!res.ok) {
     throw new Error(`Server returned ${res.status} while fetching Markdown.`);
