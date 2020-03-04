@@ -1,14 +1,4 @@
 const VERSION_TABLE_TEMPLATE = `
-## Helpers
-
-<button class="send-all" type="button">Send all commands</button>
-
-## Customizations
-
-<button class="customization" data-name="" type="button">No customizations</button>
-<button class="customization" data-name="collect-telemetry" type="button">Collect telemetry</button>
-<button class="customization" data-name="custom-avatar" type="button">Custom avatar</button>
-
 ## Versions
 
 This table is generated from \`<meta>\` tags.
@@ -142,13 +132,18 @@ async function fetchMarkdown(url) {
 window.WebChat.renderCheatsheet = async () => {
   const container = document.createElement('div');
   const content = document.createElement('div');
-  const readmeMarkdown = await fetchMarkdown('README.md')
+  const readmeMarkdown = await fetchMarkdown('README.md');
+  const customizationsMarkdown = await fetchMarkdown('../common/customizations/INDEX.md');
   const { customizationName } = window.WebChat;
-  const stepsMarkdown = await fetchMarkdown(customizationName ? `../common/customizations/${customizationName}.md` : 'STEPS.md');
+  const stepsMarkdown = await fetchMarkdown(
+    customizationName ? `../common/customizations/${customizationName}.md` : 'STEPS.md'
+  );
   const footerText = buildVersionTable();
 
   content.className = 'markdown';
-  content.innerHTML = window.markdownit({ html: true }).render(readmeMarkdown + '\n\n' + stepsMarkdown + '\n\n' + footerText);
+  content.innerHTML = window
+    .markdownit({ html: true })
+    .render([readmeMarkdown, stepsMarkdown, customizationsMarkdown, footerText].join('\n\n'));
 
   container.appendChild(content);
   container.id = 'cheat-sheet';
