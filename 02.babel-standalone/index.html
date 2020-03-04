@@ -29,7 +29,6 @@
         ReactDOM,
         WebChat: { createCognitiveServicesSpeechServicesPonyfillFactory, createDirectLine, createStore, ReactWebChat }
       } = window;
-      const store = (window.webChatStore = createStore());
 
       async function main() {
         const directLine = createDirectLine({ token: await fetchDirectLineToken() });

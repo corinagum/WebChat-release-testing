@@ -37,6 +37,7 @@
   color: Black;
 }
 
+#cheat-sheet .markdown button:focus:not(:active),
 #cheat-sheet .markdown button:hover:not(:active) {
   background: #CCC;
   color: Black;
