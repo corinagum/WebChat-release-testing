@@ -3,6 +3,12 @@ const VERSION_TABLE_TEMPLATE = `
 
 <button class="send-all" type="button">Send all commands</button>
 
+## Customizations
+
+<button class="customization" data-name="" type="button">No customizations</button>
+<button class="customization" data-name="collect-telemetry" type="button">Collect telemetry</button>
+<button class="customization" data-name="custom-avatar" type="button">Custom avatar</button>
+
 ## Versions
 
 This table is generated from \`<meta>\` tags.
@@ -110,7 +116,7 @@ async function sendAllCommands() {
   while (commands.length) {
     const text = commands.shift();
 
-    console.log(`Running command "${ text }"`);
+    console.log(`Running command "${text}"`);
 
     window.webChatStore.dispatch({
       type: 'WEB_CHAT/SEND_MESSAGE',
@@ -123,15 +129,26 @@ async function sendAllCommands() {
   }
 }
 
-(async () => {
+async function fetchMarkdown(url) {
+  const res = await fetch(url);
+
+  if (!res.ok) {
+    throw new Error(`Server returned ${res.status} while fetching Markdown.`);
+  }
+
+  return await res.text();
+}
+
+window.WebChat.renderCheatsheet = async () => {
   const container = document.createElement('div');
   const content = document.createElement('div');
-  const res = await fetch('README.md');
-  const markdown = await res.text();
+  const readmeMarkdown = await fetchMarkdown('README.md')
+  const { customizationName } = window.WebChat;
+  const stepsMarkdown = await fetchMarkdown(customizationName ? `../common/customizations/${customizationName}.md` : 'STEPS.md');
   const footerText = buildVersionTable();
 
   content.className = 'markdown';
-  content.innerHTML = window.markdownit({ html: true }).render(markdown + '\n\n' + footerText);
+  content.innerHTML = window.markdownit({ html: true }).render(readmeMarkdown + '\n\n' + stepsMarkdown + '\n\n' + footerText);
 
   container.appendChild(content);
   container.id = 'cheat-sheet';
@@ -141,5 +158,22 @@ async function sendAllCommands() {
     sendAllCommands();
   });
 
+  for (const button of content.querySelectorAll('button.customization')) {
+    button.addEventListener('click', ({ target }) => {
+      const customizationName = target.getAttribute('data-name');
+
+      console.log(customizationName);
+
+      if (customizationName) {
+        window.location.href = `?customization=${encodeURIComponent(customizationName)}`;
+      } else {
+        window.location.href = window.location.href.substr(
+          0,
+          window.location.href.length - window.location.search.length
+        );
+      }
+    });
+  }
+
   document.body.appendChild(container);
-})().catch(err => console.error(err));
+};

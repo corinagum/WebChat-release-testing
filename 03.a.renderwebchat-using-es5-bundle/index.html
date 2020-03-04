@@ -13,6 +13,7 @@
     <link href="../common/markdown.css" rel="stylesheet" />
     <link href="../common/webchat.css" rel="stylesheet" />
     <script data-presets="es2015,stage-3" src="../common/createFetchTokens.js" type="text/babel"></script>
+    <script data-presets="es2015,stage-3" src="../common/loadCustomization.js" type="text/babel"></script>
     <script data-presets="es2015,stage-3" src="../common/renderCheatSheet.js" type="text/babel"></script>
 
     <script src="../drops/webchat-es5.js"></script>
@@ -27,7 +28,7 @@
 
       async function main() {
         const directLine = createDirectLine({ token: await fetchDirectLineToken() });
-        const store = window.webChatStore = createStore();
+        const store = (window.webChatStore = createStore());
 
         // Create Web Speech ponyfill if the browser support WebRTC
         const webSpeechPonyfillFactory =
@@ -37,14 +38,17 @@
             region: await fetchSpeechServicesRegion()
           }));
 
+        await window.WebChat.loadCustomization();
+        await window.WebChat.renderCheatsheet();
+
         renderWebChat(
-          {
+          window.WebChat.customizations.patchProps({
             directLine,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: 'en-US',
             store,
             webSpeechPonyfillFactory
-          },
+          }),
           document.getElementById('webchat')
         );
       }

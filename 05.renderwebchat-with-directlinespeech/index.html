@@ -13,6 +13,7 @@
     <link href="../common/markdown.css" rel="stylesheet" />
     <link href="../common/webchat.css" rel="stylesheet" />
     <script data-presets="es2015,stage-3" src="../common/createFetchTokens.js" type="text/babel"></script>
+    <script data-presets="es2015,stage-3" src="../common/loadCustomization.js" type="text/babel"></script>
     <script data-presets="es2015,stage-3" src="../common/renderCheatSheet.js" type="text/babel"></script>
 
     <script src="../drops/webchat-es5.js"></script>
@@ -29,13 +30,16 @@
         const adapters = await createDirectLineSpeechAdapters({ fetchCredentials: fetchDirectLineSpeechCredentials });
         const store = window.webChatStore = createStore();
 
+        await window.WebChat.loadCustomization();
+        await window.WebChat.renderCheatsheet();
+
         renderWebChat(
-          {
+          window.WebChat.customizations.patchProps({
             ...adapters,
             // Firefox default language to "en", which is not supported by Cognitive Services, we need to specify it as "en-US"
             locale: 'en-US',
             store
-          },
+          }),
           document.getElementById('webchat')
         );
       }
