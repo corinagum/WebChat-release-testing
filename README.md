@@ -16,7 +16,6 @@ Formalized directions for testing Web Chat for pre- and post-release.
    - All `tgz` files
 1. Move to 01.create-react-app directory
 1. Delete Web Chat and directlinespeech dependencies from `package.json`
-1. `npm i microsoft-cognitiveservices-speech-sdk` package, but make sure `directlinespeech` is not using an external `.tgz`
 1. `npm i botframework-directlinespeech-sdk....tgz`
 1. `npm i botframework-webchat...core....tgz`
 1. `npm i botframework-webchat...component....tgz`
