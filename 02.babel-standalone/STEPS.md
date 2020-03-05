@@ -11,7 +11,8 @@
 1. Bot can send Markdown and displayed correctly
    - Type `markdown`
 
-## Additional steps to test network connectivity
+## Additional steps
 
 1. [Emulate airplane mode](index.html?customization=dljs-airplane-mode)
 1. [Use invalid token](index.html?customization=dljs-bad-token)
+1. Test [Direct Line Speech](index.html?customization=direct-line-speech) via CDN

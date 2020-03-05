@@ -70,16 +70,3 @@ Using Web Chat with `renderWebChat` with some JSX.
   );
 </script>
 ```
-
-## [05.renderwebchat-with-directlinespeech](05.renderwebchat-with-directlinespeech/index.html)
-
-Using Web Chat with Direct Line Speech channel.
-
-```html
-<script src=".../webchat-es5.js"></script>
-<script>
-  const adapters = await createDirectLineSpeechAdapters({ ... });
-
-  renderWebChat({ ...adapters, ... }, document.getElementById('webchat'));
-</script>
-```

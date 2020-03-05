@@ -10,3 +10,7 @@
    - Type `card breakfast`
 1. Bot can send Markdown and displayed correctly
    - Type `markdown`
+
+## Additional steps
+
+1. Test [Direct Line Speech](index.html?customization=direct-line-speech) via NPM
