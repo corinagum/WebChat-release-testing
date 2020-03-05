@@ -42,7 +42,7 @@ if (!window.React) {
         if (~text.indexOf('1')) {
           return false;
         } else if (~text.indexOf('2')) {
-          return React.createElement(PortraitAvatar, { fromUser });
+          return () => React.createElement(PortraitAvatar, { fromUser });
         }
 
         return next({ activity, fromUser, ...otherArgs });
