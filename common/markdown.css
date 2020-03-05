@@ -18,7 +18,8 @@
   text-decoration: underline;
 }
 
-.markdown a, a:visited {
+.markdown a,
+.markdown a:visited {
   color: #0063B1;
 }
 

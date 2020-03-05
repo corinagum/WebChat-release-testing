@@ -19,6 +19,13 @@
     <script data-presets="es2015,stage-3" src="../common/renderCheatSheet.js" type="text/babel"></script>
 
     <script src="../drops/webchat-es5.js"></script>
+    <!--
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-"
+      src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"
+    ></script>
+    -->
   </head>
   <body>
     <div id="webchat" role="main"></div>
@@ -31,7 +38,13 @@
       } = window;
 
       async function main() {
-        const directLine = createDirectLine({ token: await fetchDirectLineToken() });
+        await window.WebChat.loadCustomization();
+        await window.WebChat.renderCheatSheet();
+
+        const { createDirectLineMiddleware, patchProps } = window.WebChat.customizations;
+        const directLine = (createDirectLineMiddleware
+          ? createDirectLineMiddleware()(createDirectLine)
+          : createDirectLine)({ token: await fetchDirectLineToken() });
         const store = (window.webChatStore = createStore());
 
         // Create Web Speech ponyfill if the browser supports WebRTC
@@ -41,10 +54,7 @@
             credentials: fetchSpeechServicesCredentials
           }));
 
-        await window.WebChat.loadCustomization();
-        await window.WebChat.renderCheatSheet();
-
-        const props = await window.WebChat.customizations.patchProps({
+        const props = await patchProps({
           directLine,
           // Firefox defaults language to "en", which is not supported by Cognitive Services, so we need to specify it as "en-US"
           locale: 'en-US',

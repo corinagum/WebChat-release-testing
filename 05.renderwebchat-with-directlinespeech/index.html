@@ -17,6 +17,13 @@
     <script data-presets="es2015,stage-3" src="../common/renderCheatSheet.js" type="text/babel"></script>
 
     <script src="../drops/webchat-es5.js"></script>
+    <!--
+    <script
+      crossorigin="anonymous"
+      integrity="sha384-"
+      src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"
+    ></script>
+    -->
   </head>
   <body>
     <div id="webchat" role="main"></div>
@@ -27,11 +34,11 @@
       } = window;
 
       async function main() {
-        const adapters = await createDirectLineSpeechAdapters({ fetchCredentials: fetchDirectLineSpeechCredentials });
-        const store = window.webChatStore = createStore();
-
         await window.WebChat.loadCustomization();
         await window.WebChat.renderCheatSheet();
+
+        const adapters = await createDirectLineSpeechAdapters({ fetchCredentials: fetchDirectLineSpeechCredentials });
+        const store = (window.webChatStore = createStore());
 
         renderWebChat(
           await window.WebChat.customizations.patchProps({

@@ -34,5 +34,5 @@ async function loadScript(src) {
 }
 
 window.WebChat || (window.WebChat = {});
-window.WebChat.customizations = { patchProps: props => props };
+window.WebChat.customizations = { createDirectLineMiddleware: () => next => options => next(options), patchProps: props => props };
 window.WebChat.loadCustomization = loadCustomization;

@@ -45,8 +45,13 @@ export default function App() {
       });
 
       const { token } = await res.json();
+      const { createDirectLineMiddleware } = window.WebChat.customizations;
 
-      setDirectLine(createDirectLine({ token }));
+      setDirectLine(
+        (createDirectLineMiddleware ? createDirectLineMiddleware()(createDirectLine) : createDirectLine)({
+          token
+        })
+      );
     })();
   }, []);
 
