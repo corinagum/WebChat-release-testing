@@ -129,7 +129,7 @@ async function fetchMarkdown(url) {
   return await res.text();
 }
 
-window.WebChat.renderCheatsheet = async () => {
+window.WebChat.renderCheatSheet = async () => {
   const container = document.createElement('div');
   const content = document.createElement('div');
   const readmeMarkdown = await fetchMarkdown('README.md');
@@ -160,7 +160,7 @@ window.WebChat.renderCheatsheet = async () => {
       console.log(customizationName);
 
       if (customizationName) {
-        window.location.href = `?customization=${encodeURIComponent(customizationName)}`;
+        window.location.href = `index.html?customization=${encodeURIComponent(customizationName)}`;
       } else {
         window.location.href = window.location.href.substr(
           0,

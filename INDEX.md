@@ -1,6 +1,6 @@
 # Web Chat release testing
 
-## [01.create-react-app](01.create-react-app/index.html)
+## [01.create-react-app](/webchat-release-testing/01.create-react-app/index.html)
 
 Using Web Chat inside `create-react-app`.
 
@@ -13,7 +13,8 @@ const App = () => <ReactWebChat ... />;
 Using Web Chat with `ReactDOM.render` outside of `create-react-app`.
 
 ```html
-<script type="text/babel" data-presets="es2015,react,stage-3">
+<script src=".../webchat-es5.js"></script>
+<script>
   ReactDOM.render(<ReactWebChat ... />, document.getElementById('webchat'));
 </script>
 ```
@@ -57,7 +58,7 @@ Using Web Chat with `renderWebChat` with some JSX.
 
 ```html
 <script src=".../webchat-es5.js"></script>
-<script type="text/babel" data-presets="es2015,react,stage-3">
+<script>
   renderWebChat(
     {
       activityMiddleware: () => next => card => children => (
@@ -75,6 +76,7 @@ Using Web Chat with `renderWebChat` with some JSX.
 Using Web Chat with Direct Line Speech channel.
 
 ```html
+<script src=".../webchat-es5.js"></script>
 <script>
   const adapters = await createDirectLineSpeechAdapters({ ... });
 

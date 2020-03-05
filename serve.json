@@ -4,6 +4,26 @@
     {
       "source": "/",
       "destination": "index.html"
+    },
+    {
+      "source": "/webchat-release-testing/01.create-react-app/:path1/:path2/:filename",
+      "destination": "01.create-react-app/build/:path1/:path2/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/01.create-react-app/:path1/:filename",
+      "destination": "01.create-react-app/build/:path1/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/01.create-react-app/:filename",
+      "destination": "01.create-react-app/build/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/common/:path1/:filename",
+      "destination": "common/:path1/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/common/:filename",
+      "destination": "common/:filename"
     }
   ]
 }

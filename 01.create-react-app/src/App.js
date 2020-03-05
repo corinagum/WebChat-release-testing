@@ -8,36 +8,31 @@ import ReactWebChat, {
 
 function createFetchSpeechServicesCredentials() {
   let expireAfter = 0;
-  let lastResult = {};
+  let resultPromise;
 
-  return async () => {
-    if (Date.now() > expireAfter) {
-      const speechServicesTokenRes = await fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', {
-        method: 'POST'
-      });
+  return () => {
+    if (!resultPromise || Date.now() > expireAfter) {
+      expireAfter = Date.now() + 5000;
+      resultPromise = fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', { method: 'POST' })
+        .then(res => res.json())
+        .catch(err => {
+          expireAfter = 0;
+          resultPromise = null;
 
-      lastResult = await speechServicesTokenRes.json();
-      expireAfter = Date.now() + 300000;
+          return Promise.reject(err);
+        });
     }
 
-    return lastResult;
+    return resultPromise;
   };
 }
 
 const fetchSpeechServicesCredentials = createFetchSpeechServicesCredentials();
 
-async function fetchSpeechServicesRegion() {
-  return (await fetchSpeechServicesCredentials()).region;
-}
-
-async function fetchSpeechServicesToken() {
-  return (await fetchSpeechServicesCredentials()).token;
-}
-
 export default function App() {
   const [store] = useState(() => createStore());
   const [directLine, setDirectLine] = useState();
-  const [speechPonyfillFactory, setSpeechPonyfillFactory] = useState();
+  const [webSpeechPonyfillFactory, setWebSpeechPonyfillFactory] = useState();
 
   useEffect(() => {
     window.webChatStore = store;
@@ -58,24 +53,34 @@ export default function App() {
   useEffect(() => {
     (async () => {
       const ponyfillFactory = await createCognitiveServicesSpeechServicesPonyfillFactory({
-        authorizationToken: fetchSpeechServicesToken,
-        region: await fetchSpeechServicesRegion()
+        credentials: fetchSpeechServicesCredentials
       });
 
-      setSpeechPonyfillFactory(() => ponyfillFactory);
+      setWebSpeechPonyfillFactory(() => ponyfillFactory);
     })();
   }, []);
 
+  const [props, setProps] = useState();
+
+  useEffect(() => {
+    (async function() {
+      if (directLine && store && webSpeechPonyfillFactory) {
+        setProps(
+          await window.WebChat.customizations.patchProps({
+            directLine,
+            locale: 'en-US',
+            store,
+            webSpeechPonyfillFactory
+          })
+        );
+      }
+    })();
+  }, [directLine, store, webSpeechPonyfillFactory]);
+
   return (
-    !!directLine &&
-    !!speechPonyfillFactory && (
+    !!props && (
       <div id="webchat">
-        <ReactWebChat
-          directLine={directLine}
-          locale="en-US"
-          store={store}
-          webSpeechPonyfillFactory={speechPonyfillFactory}
-        />
+        <ReactWebChat {...props} />
       </div>
     )
   );

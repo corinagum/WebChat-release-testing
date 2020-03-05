@@ -23,7 +23,7 @@
   <body>
     <div id="webchat" role="main"></div>
     <script type="text/babel" data-presets="es2015,react,stage-3">
-      const { fetchDirectLineToken, fetchSpeechServicesRegion, fetchSpeechServicesToken } = window.createFetchTokens();
+      const { fetchDirectLineToken, fetchSpeechServicesCredentials } = window.createFetchTokens();
       const {
         WebChat: { createCognitiveServicesSpeechServicesPonyfillFactory, createDirectLine, createStore, renderWebChat }
       } = window;
@@ -33,14 +33,13 @@
         const store = window.webChatStore = createStore();
 
         await window.WebChat.loadCustomization();
-        await window.WebChat.renderCheatsheet();
+        await window.WebChat.renderCheatSheet();
 
         // Create Web Speech ponyfill if the browser support WebRTC
         const webSpeechPonyfillFactory =
           window.navigator.mediaDevices &&
           (await createCognitiveServicesSpeechServicesPonyfillFactory({
-            authorizationToken: fetchSpeechServicesToken,
-            region: await fetchSpeechServicesRegion()
+            credentials: fetchSpeechServicesCredentials
           }));
 
         // We want to make sure we didn't break React hooks in hosting apps

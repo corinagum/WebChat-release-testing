@@ -31,7 +31,7 @@
         const store = window.webChatStore = createStore();
 
         await window.WebChat.loadCustomization();
-        await window.WebChat.renderCheatsheet();
+        await window.WebChat.renderCheatSheet();
 
         renderWebChat(
           await window.WebChat.customizations.patchProps({
