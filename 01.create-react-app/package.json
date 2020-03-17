@@ -1,7 +1,7 @@
 {
   "name": "npmwebchat",
   "version": "0.1.0",
-  "homepage": "https://compulim.github.io/webchat-release-testing/01.create-react-app/",
+  "homepage": "https://corinagum.github.io/WebChat-release-testing/01.create-react-app/",
   "private": true,
   "dependencies": {
     "memoize-one": "^5.1.1",
