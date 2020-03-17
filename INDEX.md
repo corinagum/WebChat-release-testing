@@ -1,6 +1,6 @@
 # Web Chat release testing
 
-## [01.create-react-app](/webchat-release-testing/01.create-react-app/index.html)
+## [01.create-react-app](/WebChat-release-testing/01.create-react-app/index.html)
 
 Using Web Chat inside `create-react-app`.
 

@@ -1,5 +1,9 @@
 # Web Chat release testing
 
+## Try it out
+
+Click to [try out hosted release testing](https://corinagum.github.io/WebChat-release-testing/).
+
 ## What is?
 
 Formalized directions for testing Web Chat for pre- and post-release.
