@@ -40,3 +40,7 @@
 1. Direct Line Speech: Simple speech recognition and synthesis
    1. Say "What's the weather?"
    1. Expect: bot should say, "here is the forecast of this week."
+
+## Additional steps
+
+1. Test [Direct Line App Service Extension](index.html?customization=direct-line-app-service-extension) via NPM

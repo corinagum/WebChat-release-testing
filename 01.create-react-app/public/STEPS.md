@@ -14,3 +14,4 @@
 ## Additional steps
 
 1. Test [Direct Line Speech](index.html?customization=direct-line-speech) via NPM
+1. Test [Direct Line App Service Extension](index.html?customization=direct-line-app-service-extension) via NPM

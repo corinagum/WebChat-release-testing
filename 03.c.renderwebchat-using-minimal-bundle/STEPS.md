@@ -6,3 +6,7 @@
    - Bot will respond with a simple response
 1. Bot can send Markdown but it should become plain text
    - Type `markdown`
+
+## Additional steps
+
+1. Test [Direct Line App Service Extension](index.html?customization=direct-line-app-service-extension) via NPM
