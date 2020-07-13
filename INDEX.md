@@ -70,3 +70,11 @@ Using Web Chat with `renderWebChat` with some JSX.
   );
 </script>
 ```
+
+## [05.cdc](05.cdc/index.html)
+
+Using Web Chat hosted like CDC.
+
+```html
+<iframe src="cdc.html"></iframe>
+```

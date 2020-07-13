@@ -8,11 +8,14 @@ This table is generated from \`<meta>\` tags.
 {CONTENT}
 `;
 
-function buildVersionTable() {
+function buildVersionTable(contentDocument) {
+  console.log(contentDocument);
+  window.abc = contentDocument;
+
   return VERSION_TABLE_TEMPLATE.replace(
     '{CONTENT}',
     [].map
-      .call(document.querySelectorAll('head meta[name^="bot"]'), meta => {
+      .call(contentDocument.querySelectorAll('head meta[name^="bot"]'), meta => {
         return `| ${meta.name} | ${meta.content} |`;
       })
       .join('\n')
@@ -129,7 +132,7 @@ async function fetchMarkdown(url) {
   return await res.text();
 }
 
-window.WebChat.renderCheatSheet = async () => {
+window.WebChat.renderCheatSheet = async ({ contentDocument = document } = {}) => {
   const container = document.createElement('div');
   const content = document.createElement('div');
   const readmeMarkdown = await fetchMarkdown('README.md');
@@ -138,7 +141,7 @@ window.WebChat.renderCheatSheet = async () => {
   const stepsMarkdown = await fetchMarkdown(
     customizationName ? `../common/customizations/${customizationName}.md` : 'STEPS.md'
   );
-  const footerText = buildVersionTable();
+  const footerText = buildVersionTable(contentDocument);
 
   content.className = 'markdown';
   content.innerHTML = window

@@ -1,3 +1,5 @@
+window.WebChat || (window.WebChat = {});
+
 (() => {
   const parts = document.location.search.replace(/^\?/, '').split('&');
   const search = parts.reduce((search, part) => {
@@ -33,6 +35,5 @@ async function loadScript(src) {
   eval(Babel.transform(code, { presets: ['es2015', 'stage-3'] }).code);
 }
 
-window.WebChat || (window.WebChat = {});
 window.WebChat.customizations = { createDirectLineMiddleware: () => next => options => next(options), patchProps: props => props };
 window.WebChat.loadCustomization = loadCustomization;
