@@ -18,15 +18,8 @@
     <script data-presets="es2015,stage-3" src="../common/loadCustomization.js" type="text/babel"></script>
     <script data-presets="es2015,stage-3" src="../common/renderCheatSheet.js" type="text/babel"></script>
 
-    <!-- <script src="../drops/webchat-es5.js"></script> -->
-    <!-- <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"></script> -->
-    <!--
-    <script
-      crossorigin="anonymous"
-      integrity="sha384-"
-      src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"
-    ></script>
-    -->
+    <!-- We load Web Chat only for its polyfills -->
+    <script src="../drops/webchat-es5.js"></script>
   </head>
   <body>
     <iframe

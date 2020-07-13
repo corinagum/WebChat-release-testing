@@ -19,15 +19,21 @@
     <!-- <script src="https://www.cdc.gov/JScript/metrics/topic_levels.js"></script>
   	<script src="https://www.cdc.gov/JScript/metrics/adobe/analytics_devcdc.js"></script> -->
     <script>
-      s = { t: () => 0 };
-      siteCatalyst = {
-        setLevel1: () => {},
-        setLevel2: () => {},
-        setLevel3: () => {},
-        setLevel4: () => {},
-        setLevel5: () => {}
+      s = {
+        t: function () {
+          return 0;
+        }
       };
-      updateVariables = () => {};
+
+      siteCatalyst = {
+        setLevel1: function () {},
+        setLevel2: function () {},
+        setLevel3: function () {},
+        setLevel4: function () {},
+        setLevel5: function () {}
+      };
+
+      updateVariables = function () {};
     </script>
     <script>
       s.pageName = 'Coronavirus Assessment Tool';
