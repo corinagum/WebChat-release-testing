@@ -6,6 +6,10 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
+### Features shipped in R10
+
+<button class="customization" data-name="activity-grouping" type="button">Activity grouping</button>
+
 ### Features shipped in R8
 
 <button class="customization" data-name="collect-telemetry" type="button">Collect telemetry</button>
