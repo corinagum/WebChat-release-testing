@@ -12,9 +12,7 @@ Formalized directions for testing Web Chat for pre- and post-release.
 
 1. Navigate to [VSTS Web Chat daily builds](https://fuselabs.visualstudio.com/BotFramework-WebChat/_build?definitionId=498)
    1. Queue a new daily build (upper right corner)
-   1. Once the build finishes, click the Artifacts button (upper right corner)
-   1. Download the `cdn_files` and `tgzfiles` .zip folders
-   1. (These directions are old; VSTS UI changed)
+![image](https://user-images.githubusercontent.com/14900841/108572712-c1c67800-72c7-11eb-8f61-f75b52201447.png)
 1. Extract into the drop folder:
    - All files from `cdn_folder` except those ending in `*.LICENSE` and `*.json`
    - All `tgz` files
