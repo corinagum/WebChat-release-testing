@@ -22,6 +22,7 @@ Formalized directions for testing Web Chat for pre- and post-release.
 1. Delete Web Chat and directlinespeech dependencies from `package.json`
 1. `npm i botframework-directlinespeech-sdk....tgz`
 1. `npm i botframework-webchat...core....tgz`
+1. `npm i botframework-webchat...api....tgz`
 1. `npm i botframework-webchat...component....tgz`
 1. `npm i botframework-webchat...tgz` (no suffix)
 
