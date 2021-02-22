@@ -6,6 +6,13 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
+### Features shipped in R12
+
+<button class="customization" data-name="auto-scroll-snap" type="button">Auto scroll snapping</button>
+<button class="customization" data-name="multi-line-send-box" type="button">Multi-line send box</button>
+<button class="customization" data-name="suggested-actions-flow-layout" type="button">Suggested actions flow layout</button>
+<button class="customization" data-name="suggested-actions-multiple-lines" type="button">Suggested actions with multiple lines</button>
+
 ### Features shipped in R10
 
 <button class="customization" data-name="activity-grouping" type="button">Activity grouping</button>
