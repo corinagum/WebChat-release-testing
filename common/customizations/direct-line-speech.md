@@ -1,3 +1,7 @@
+## (New) Steps to test Direct Line Speech `replyToId`
+
+1. Speak to bot a few times - should be no delay from bot
+
 ## Steps to test Direct Line Speech
 
 1. Type `user id` to display user ID
