@@ -30,7 +30,6 @@ https://1drv.ms/x/s!Aqv30r9qhHTIdWWqWl6egBqgaRk?e=F7jp1n
 
 - Chrome
 - Edge Anaheim
-- Edge UWP
 - Firefox
 - Internet Explorer (`renderWebChat es5.js`)
 - Safari (Mac)
@@ -94,7 +93,6 @@ https://1drv.ms/x/s!Aqv30r9qhHTIdWWqWl6egBqgaRk?e=F7jp1n
   'proactive',
   'receiptcard',
   'sample:backchannel',
-  'sample:github-repository',
   'sample:password-input',
   'sample:redux-middleware',
   'signin',

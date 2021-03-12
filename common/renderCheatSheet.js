@@ -79,7 +79,6 @@ async function sendAllCommands() {
     'proactive',
     'receiptcard',
     'sample:backchannel',
-    'sample:github-repository',
     'sample:password-input',
     'sample:redux-middleware',
     'signin',
