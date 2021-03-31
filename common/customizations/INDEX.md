@@ -6,20 +6,17 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
-### Features shipped in R12.1
+### Features shipped in R3
 
+<button class="customization" data-name="external-links" type="button">External links icon</button>
+
+### Previous features
 <button class="customization" data-name="ac-max-parser" type="button">AC Max Schema</button>
 <button class="customization" data-name="direct-line-speech" type="button">DLS `replyToId`</button>
-
-### Features shipped in R12
-
 <button class="customization" data-name="auto-scroll-snap" type="button">Auto scroll snapping</button>
 <button class="customization" data-name="multi-line-send-box" type="button">Multi-line send box</button>
 <button class="customization" data-name="suggested-actions-flow-layout" type="button">Suggested actions flow layout</button>
 <button class="customization" data-name="suggested-actions-multiple-lines" type="button">Suggested actions with multiple lines</button>
-
-### Previous features
-
 <button class="customization" data-name="activity-grouping" type="button">Activity grouping</button>
 <button class="customization" data-name="collect-telemetry" type="button">Collect telemetry</button>
 <button class="customization" data-name="custom-activity-status" type="button">Custom activity status</button>
