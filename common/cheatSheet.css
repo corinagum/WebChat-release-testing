@@ -31,12 +31,12 @@
   }
 }
 
-#cheat-sheet .markdown a,
-#cheat-sheet .markdown a:visited {
+#cheat-sheet .cheat-sheet__markdown a,
+#cheat-sheet .cheat-sheet__markdown a:visited {
   color: #24A0FF;
 }
 
-#cheat-sheet .markdown button {
+#cheat-sheet .cheat-sheet__markdown button {
   appearance: none;
   background: none;
   border: solid 2px #CCC;
@@ -48,24 +48,24 @@
   padding: .4em .6em;
 }
 
-#cheat-sheet .markdown button:active {
+#cheat-sheet .cheat-sheet__markdown button:active {
   background: #999;
   border-color: #999;
   color: Black;
 }
 
-#cheat-sheet .markdown button:focus:not(:active),
-#cheat-sheet .markdown button:hover:not(:active) {
+#cheat-sheet .cheat-sheet__markdown button:focus:not(:active),
+#cheat-sheet .cheat-sheet__markdown button:hover:not(:active) {
   background: #CCC;
   color: Black;
 }
 
-#cheat-sheet .markdown :not(pre) > code {
+#cheat-sheet .cheat-sheet__markdown :not(pre) > code {
   background-color: #444;
   outline-color: #444;
 }
 
-#cheat-sheet .markdown pre {
+#cheat-sheet .cheat-sheet__markdown pre {
   background-color: #444;
   color: #CCC;
 }
@@ -84,29 +84,29 @@
   display: none;
 }
 
-#cheat-sheet .markdown blockquote {
+#cheat-sheet .cheat-sheet__markdown blockquote {
   border-left-color: #888;
   color: #999;
 }
 
-#cheat-sheet .markdown h1,
-#cheat-sheet .markdown h2,
-#cheat-sheet .markdown h3,
-#cheat-sheet .markdown h4,
-#cheat-sheet .markdown h5,
-#cheat-sheet .markdown h6 {
+#cheat-sheet .cheat-sheet__markdown h1,
+#cheat-sheet .cheat-sheet__markdown h2,
+#cheat-sheet .cheat-sheet__markdown h3,
+#cheat-sheet .cheat-sheet__markdown h4,
+#cheat-sheet .cheat-sheet__markdown h5,
+#cheat-sheet .cheat-sheet__markdown h6 {
   border-bottom-color: #666;
 }
 
-#cheat-sheet .markdown table > tbody > tr:nth-child(2n) > td {
+#cheat-sheet .cheat-sheet__markdown table > tbody > tr:nth-child(2n) > td {
   background-color: #444;
 }
 
-#cheat-sheet .markdown table > tbody > tr > td,
-#cheat-sheet .markdown table > tbody > tr > th,
-#cheat-sheet .markdown table > tfoot > tr > td,
-#cheat-sheet .markdown table > tfoot > tr > th,
-#cheat-sheet .markdown table > thead > tr > td,
-#cheat-sheet .markdown table > thead > tr > th {
+#cheat-sheet .cheat-sheet__markdown table > tbody > tr > td,
+#cheat-sheet .cheat-sheet__markdown table > tbody > tr > th,
+#cheat-sheet .cheat-sheet__markdown table > tfoot > tr > td,
+#cheat-sheet .cheat-sheet__markdown table > tfoot > tr > th,
+#cheat-sheet .cheat-sheet__markdown table > thead > tr > td,
+#cheat-sheet .cheat-sheet__markdown table > thead > tr > th {
   border-color: #666;
 }
