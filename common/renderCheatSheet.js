@@ -139,7 +139,7 @@ window.WebChat.renderCheatSheet = async ({ contentDocument = document } = {}) =>
   );
   const footerText = buildVersionTable(contentDocument);
 
-  content.className = 'markdown';
+  content.className = 'cheat-sheet__markdown';
   content.innerHTML = window
     .markdownit({ html: true })
     .render([readmeMarkdown, stepsMarkdown, customizationsMarkdown, footerText].join('\n\n'));

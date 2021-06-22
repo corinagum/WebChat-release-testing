@@ -1,64 +1,64 @@
-.markdown {
+.cheat-sheet__markdown {
   font-family: Calibri, 'Helvetica Neue Light', Arial, sans-serif;
 }
 
-.markdown > :first-child:not(table) {
+.cheat-sheet__markdown > :first-child:not(table) {
   margin-top: 0;
 }
 
-.markdown > :last-child:not(table) {
+.cheat-sheet__markdown > :last-child:not(table) {
   margin-bottom: 0;
 }
 
-.markdown a {
+.cheat-sheet__markdown a {
   text-decoration: none;
 }
 
-.markdown a:hover {
+.cheat-sheet__markdown a:hover {
   text-decoration: underline;
 }
 
-.markdown a,
-.markdown a:visited {
+.cheat-sheet__markdown a,
+.cheat-sheet__markdown a:visited {
   color: #0063B1;
 }
 
-.markdown blockquote {
+.cheat-sheet__markdown blockquote {
   border-left: solid 3px #E6E6E6;
   color: #888;
   margin: 0 0 1em;
   padding: 0 0 0 .5em;
 }
 
-.markdown blockquote > p {
+.cheat-sheet__markdown blockquote > p {
   margin: 0;
 }
 
-.markdown code {
+.cheat-sheet__markdown code {
   font-family: Consolas, 'Courier New', monospace;
   font-size: 85%;
 }
 
-.markdown :not(pre) > code {
+.cheat-sheet__markdown :not(pre) > code {
   background-color: #F3F3F3;
   margin: 0 3px;
   outline: solid 3px #F3F3F3;
   padding: 0 2px;
 }
 
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
+.cheat-sheet__markdown h1,
+.cheat-sheet__markdown h2,
+.cheat-sheet__markdown h3,
+.cheat-sheet__markdown h4,
+.cheat-sheet__markdown h5,
+.cheat-sheet__markdown h6 {
   border-bottom: solid 1px #EEE;
   font-family: 'Calibri Light', 'Helvetica Neue Light', Arial, sans-serif;
   font-weight: 100;
   padding-bottom: 5px;
 }
 
-.markdown pre {
+.cheat-sheet__markdown pre {
   background-color: #F3F3F3;
   border-radius: 4px;
   color: #444;
@@ -68,7 +68,7 @@
   text-indent: 0;
 }
 
-.markdown table {
+.cheat-sheet__markdown table {
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 1em;
@@ -76,45 +76,45 @@
   width: 100%;
 }
 
-.markdown table > tbody > tr:nth-child(2n) > td {
+.cheat-sheet__markdown table > tbody > tr:nth-child(2n) > td {
   background-color: #F3F3F3;
 }
 
-.markdown table > tbody > tr > th,
-.markdown table > tfoot > tr > th,
-.markdown table > thead > tr > th {
+.cheat-sheet__markdown table > tbody > tr > th,
+.cheat-sheet__markdown table > tfoot > tr > th,
+.cheat-sheet__markdown table > thead > tr > th {
   font-weight: normal;
 }
 
-.markdown table > tbody > tr > td,
-.markdown table > tbody > tr > th,
-.markdown table > tfoot > tr > td,
-.markdown table > tfoot > tr > th,
-.markdown table > thead > tr > td,
-.markdown table > thead > tr > th {
+.cheat-sheet__markdown table > tbody > tr > td,
+.cheat-sheet__markdown table > tbody > tr > th,
+.cheat-sheet__markdown table > tfoot > tr > td,
+.cheat-sheet__markdown table > tfoot > tr > th,
+.cheat-sheet__markdown table > thead > tr > td,
+.cheat-sheet__markdown table > thead > tr > th {
   border: 1px solid #DDD;
   padding: .4em;
 }
 
-.markdown ul {
+.cheat-sheet__markdown ul {
   list-style-type: none;
   margin-left: 1em;
   padding: 0;
   text-indent: -1em;
 }
 
-.markdown ul > li > ol,
-.markdown ul > li > ul {
+.cheat-sheet__markdown ul > li > ol,
+.cheat-sheet__markdown ul > li > ul {
   margin-left: 1em;
 }
 
-.markdown ol > li,
-.markdown ul > li {
+.cheat-sheet__markdown ol > li,
+.cheat-sheet__markdown ul > li {
   margin-bottom: .4em;
   margin-top: .4em;
 }
 
-.markdown ul > li::before {
+.cheat-sheet__markdown ul > li::before {
   font-family: 'FabricMDL2Icons';
   font-size: 10px;
   content: '\E827';
