@@ -1,3 +1,7 @@
+window.addEventListener('error', function (event) {
+  event.error && alert(event.error);
+});
+
 window.WebChat.customizations = {
   ...window.WebChat.customizations,
   patchProps: props => ({
@@ -9,27 +13,29 @@ window.WebChat.customizations = {
   })
 };
 
-const style = document.createElement('style');
+const styleElement = document.createElement('style');
 
-style.innerHTML = `
-.webchat__basic-transcript__scrollable .webchat__screen-reader-activity {
-  background-color: #E00;
-  color: White !important;
-  font-family: Calibri, "Helvetica Neue", Arial, sans-serif;
-  height: initial !important;
-  margin: 10px;
-  opacity: initial !important;
-  overflow: initial !important;
-  padding: 10px;
-  position: initial !important;
-  top: initial !important;
-  white-space: initial !important;
-  width: initial !important;
-}
+document.head.appendChild(styleElement);
 
-.webchat__basic-transcript__scrollable .webchat__screen-reader-activity p {
-  margin: 0;
-}
-`;
+styleElement.sheet.insertRule(
+  '.webchat__basic-transcript__scrollable .webchat__screen-reader-activity {' +
+    'background-color: #E00;' +
+    'color: White !important;' +
+    'font-family: Calibri, "Helvetica Neue", Arial, sans-serif;' +
+    'height: auto !important;' +
+    'margin: 10px;' +
+    'opacity: 1 !important;' +
+    'overflow: auto !important;' +
+    'padding: 10px;' +
+    'position: relative !important;' +
+    'top: 0 !important;' +
+    'white-space: nowrap !important;' +
+    'width: auto !important;' +
+    '}',
+  0
+);
 
-document.head.appendChild(style);
+styleElement.sheet.insertRule(
+  '.webchat__basic-transcript__scrollable .webchat__screen-reader-activity p { margin: 0; }',
+  1
+);
