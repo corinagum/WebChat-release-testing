@@ -23,7 +23,7 @@ styleElement.sheet.insertRule(
     'padding: 10px;' +
     'position: relative !important;' +
     'top: 0 !important;' +
-    'white-space: nowrap !important;' +
+    'white-space: normal !important;' +
     'width: auto !important;' +
     '}',
   0
