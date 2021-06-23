@@ -15,8 +15,6 @@ window.WebChat.customizations = {
 
 const styleElement = document.createElement('style');
 
-document.head.appendChild(styleElement);
-
 styleElement.sheet.insertRule(
   '.webchat__basic-transcript__scrollable .webchat__screen-reader-activity {' +
     'background-color: #E00;' +
@@ -39,3 +37,5 @@ styleElement.sheet.insertRule(
   '.webchat__basic-transcript__scrollable .webchat__screen-reader-activity p { margin: 0; }',
   1
 );
+
+document.head.appendChild(styleElement);
