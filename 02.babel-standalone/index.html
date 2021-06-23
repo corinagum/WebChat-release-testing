@@ -3,6 +3,15 @@
   <head>
     <title>Babel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      'use strict';
+
+      // IE11: Show error in alert dialog.
+      ~window.navigator.userAgent.indexOf('Trident/7.0') &&
+        window.addEventListener('error', function (event) {
+          event.error && alert(event.error);
+        });
+    </script>
 
     <script crossorigin="anonymous" src="https://unpkg.com/babel-standalone@6/babel.js"></script>
     <script crossorigin="anonymous" src="https://unpkg.com/regenerator-runtime@0.13.3/runtime.js"></script>
@@ -43,9 +52,9 @@
         await window.WebChat.renderCheatSheet();
 
         const { createDirectLineMiddleware, patchProps } = window.WebChat.customizations;
-        const directLine = (createDirectLineMiddleware
-          ? createDirectLineMiddleware()(createDirectLine)
-          : createDirectLine)({ token: await fetchDirectLineToken() });
+        const directLine = (
+          createDirectLineMiddleware ? createDirectLineMiddleware()(createDirectLine) : createDirectLine
+        )({ token: await fetchDirectLineToken() });
         const store = (window.webChatStore = createStore());
 
         // Create Web Speech ponyfill if the browser supports WebRTC
