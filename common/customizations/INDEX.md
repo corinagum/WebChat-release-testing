@@ -6,11 +6,13 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
-### Features shipped in R3
+### Features shipped in R14
 
-<button class="customization" data-name="external-links" type="button">External links icon</button>
+<button class="customization" data-name="strip-markdown" type="button">New strip Markdown algorithm (R14)</button>
 
 ### Previous features
+
+<button class="customization" data-name="external-links" type="button">External links icon (R13)</button>
 <button class="customization" data-name="ac-max-parser" type="button">AC Max Schema</button>
 <button class="customization" data-name="direct-line-speech" type="button">DLS `replyToId`</button>
 <button class="customization" data-name="auto-scroll-snap" type="button">Auto scroll snapping</button>
