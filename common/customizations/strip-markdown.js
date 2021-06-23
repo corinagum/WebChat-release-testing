@@ -1,7 +1,3 @@
-window.addEventListener('error', function (event) {
-  event.error && alert(event.error);
-});
-
 window.WebChat.customizations = {
   ...window.WebChat.customizations,
   patchProps: props => ({
