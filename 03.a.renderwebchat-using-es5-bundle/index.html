@@ -9,7 +9,7 @@
       // IE11: Show error in alert dialog.
       ~window.navigator.userAgent.indexOf('Trident/7.0') &&
         window.addEventListener('error', function (event) {
-          event.error && alert(event.error);
+          event.error && alert(event.error + '\n\n' + event.error.stack);
         });
     </script>
 
