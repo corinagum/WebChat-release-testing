@@ -1,0 +1,25 @@
+window.WebChat.customizations = {
+  ...window.WebChat.customizations,
+  createDirectLineMiddleware: () => next => options =>
+    next({
+      token: 'invalid-token'
+    }),
+    patchProps: props => ({
+      ...props,
+      store: window.WebChat.createStore({}, ({ dispatch }) => {
+        setImmediate(
+          () =>
+            dispatch({
+              type: 'WEB_CHAT/SET_NOTIFICATION',
+              payload: {
+                id: 'airplane-mode',
+                level: 'error',
+                message: 'Direct Line channel: Connecting using bad token.'
+              }
+            })
+        );
+
+        return next => action => next(action);
+      })
+    })
+};
