@@ -4,7 +4,7 @@ if (!window.React) {
     patchProps: props => ({
       ...props,
       store: window.WebChat.createStore({}, ({ dispatch }) => {
-        setImmediate(
+        setTimeout(
           () =>
             dispatch({
               type: 'WEB_CHAT/SET_NOTIFICATION',
@@ -13,7 +13,8 @@ if (!window.React) {
                 level: 'error',
                 message: 'Custom avatar is not shown because React is not loaded in this environment.'
               }
-            })
+            }),
+          0
         );
 
         return next => action => next(action);
@@ -36,17 +37,20 @@ if (!window.React) {
     ...window.WebChat.customizations,
     patchProps: props => ({
       ...props,
-      avatarMiddleware: () => next => ({ activity, fromUser, ...otherArgs }) => {
-        const { text = '' } = activity;
+      avatarMiddleware:
+        () =>
+        next =>
+        ({ activity, fromUser, ...otherArgs }) => {
+          const { text = '' } = activity;
 
-        if (~text.indexOf('1')) {
-          return false;
-        } else if (~text.indexOf('2')) {
-          return () => React.createElement(PortraitAvatar, { fromUser });
-        }
+          if (~text.indexOf('1')) {
+            return false;
+          } else if (~text.indexOf('2')) {
+            return () => React.createElement(PortraitAvatar, { fromUser });
+          }
 
-        return next({ activity, fromUser, ...otherArgs });
-      },
+          return next({ activity, fromUser, ...otherArgs });
+        },
       styleOptions: {
         botAvatarInitials: 'WC',
         userAvatarInitials: 'WW'
