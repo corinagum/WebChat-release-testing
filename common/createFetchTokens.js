@@ -53,7 +53,7 @@ window.createFetchTokens = () => {
       return token;
     },
     fetchDirectLineAppServiceExtensionToken: async () => {
-      const res = await fetch('https://webchat-mockbot2.azurewebsites.net/api/token/directlinease', { method: 'POST' });
+      const res = await fetch('https://webchat-mockbot3.azurewebsites.net/api/token/directlinease', { method: 'POST' });
       const { token } = await res.json();
 
       return token;
