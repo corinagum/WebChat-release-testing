@@ -3,6 +3,7 @@ import 'core-js/features/array/find';
 import 'core-js/features/array/includes';
 import 'core-js/features/array/iterator';
 import 'core-js/features/dom-collections';
+import 'core-js/features/map';
 import 'core-js/features/math/sign';
 import 'core-js/features/number/is-finite';
 import 'core-js/features/object/assign';
