@@ -1,3 +1,7 @@
+# Setting to a different base image to secure your container supply chain.
+ARG REGISTRY=docker.io
+ARG BASE_IMAGE=$REGISTRY/node:18-alpine
+
 FROM node:alpine
 ENV TARGET_VERSION=4.7.1
 EXPOSE 80
