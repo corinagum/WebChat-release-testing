@@ -6,6 +6,10 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
+### Features shipped in 4.14.2
+
+<button class="customization" data-name="upload-file-in-polish" type="button">Upload a file in Polish</button>
+
 ### Features shipped in R14
 
 <button class="customization" data-name="strip-markdown" type="button">New strip Markdown algorithm (R14)</button>
