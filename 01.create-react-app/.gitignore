@@ -23,3 +23,12 @@ yarn-debug.log*
 yarn-error.log*
 
 !external/*.tgz
+
+# yarn without Zero-installs
+/.pnp.*
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+!/.yarn/versions
