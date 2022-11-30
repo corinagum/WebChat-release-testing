@@ -4,11 +4,14 @@
   "homepage": "https://corinagum.github.io/WebChat-release-testing/01.create-react-app/",
   "private": true,
   "dependencies": {
+    "core-js": "^3.26.1",
     "memoize-one": "^5.1.1",
     "react": "^17.0.1",
     "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.1",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "url-search-params-polyfill": "^8.1.1",
+    "whatwg-fetch": "^3.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
