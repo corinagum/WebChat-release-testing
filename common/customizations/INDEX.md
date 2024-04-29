@@ -6,6 +6,10 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
+### Features shipped in 4.17.0
+
+<button class="customization" data-name="fluent-theme" type="button">(Experimental) Fluent skin pack</button>
+
 ### Features shipped in 4.14.2
 
 <button class="customization" data-name="upload-file-in-polish" type="button">Upload a file in Polish</button>

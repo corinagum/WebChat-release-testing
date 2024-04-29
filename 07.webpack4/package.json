@@ -1,0 +1,24 @@
+{
+  "name": "webchat-webpack4",
+  "version": "0.0.0-0",
+  "description": "",
+  "main": "index.js",
+  "author": "William Wong (https://github.com/compulim)",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.4",
+    "@babel/preset-react": "^7.24.1",
+    "babel-loader": "^8.3.0",
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^4.47.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "punycode": "^2.3.1",
+    "react": "~16.8.6",
+    "react-dom": "~16.8.6"
+  }
+}

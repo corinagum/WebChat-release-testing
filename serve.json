@@ -18,6 +18,30 @@
       "destination": "01.create-react-app/build/:filename"
     },
     {
+      "source": "/webchat-release-testing/06.esbuild/:path1/:path2/:filename",
+      "destination": "06.esbuild/public/:path1/:path2/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/06.esbuild/:path1/:filename",
+      "destination": "06.esbuild/public/:path1/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/06.esbuild/:filename",
+      "destination": "06.esbuild/public/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/07.webpack4/:path1/:path2/:filename",
+      "destination": "07.webpack4/public/:path1/:path2/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/07.webpack4/:path1/:filename",
+      "destination": "07.webpack4/public/:path1/:filename"
+    },
+    {
+      "source": "/webchat-release-testing/07.webpack4/:filename",
+      "destination": "07.webpack4/public/:filename"
+    },
+    {
       "source": "/webchat-release-testing/common/:path1/:filename",
       "destination": "common/:path1/:filename"
     },

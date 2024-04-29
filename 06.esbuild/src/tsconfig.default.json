@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["DOM", "ESNext", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "types": []
+  },
+  "extends": "@tsconfig/strictest",
+  "include": ["./**/*"]
+}
