@@ -79,7 +79,7 @@ Using Web Chat hosted like CDC.
 <iframe src="cdc.html"></iframe>
 ```
 
-## [06.esbuild](06.esbuild/public/index.html)
+## [06.esbuild](/WebChat-release-testing/06.esbuild/index.html)
 
 Using Web Chat bundled by ESBuild.
 
@@ -87,7 +87,7 @@ Using Web Chat bundled by ESBuild.
 const App = () => <ReactWebChat ... />;
 ```
 
-## [07.webpack4](07.webpack4/public/index.html)
+## [07.webpack4](/WebChat-release-testing/07.webpack4/index.html)
 
 Using Web Chat bundled by Webpack 4.
 
