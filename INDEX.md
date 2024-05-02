@@ -94,3 +94,11 @@ Using Web Chat bundled by Webpack 4.
 ```jsx
 const App = () => <ReactWebChat ... />;
 ```
+
+## [08.webpack5](/WebChat-release-testing/08.webpack5/index.html)
+
+Using Web Chat bundled by Webpack 5.
+
+```jsx
+const App = () => <ReactWebChat ... />;
+```
