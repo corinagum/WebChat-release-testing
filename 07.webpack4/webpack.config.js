@@ -3,11 +3,11 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  // mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {
-        test: /\.(?:jsx?|mjs|cjs)?$/,
+        test: /\.(jsx?|mjs)$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -26,7 +26,7 @@ module.exports = {
     path: resolve(__dirname, './public/static/')
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx', '.css']
+    extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'] // Default of Webpack 4 plus JSX
   },
   target: 'web'
 };

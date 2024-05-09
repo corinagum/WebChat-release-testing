@@ -2,11 +2,11 @@ const { resolve } = require('path');
 
 module.exports = {
   entry: './src/index.js',
-  // mode: 'production',
+  mode: 'production',
   module: {
     rules: [
       {
-        test: /\.(?:jsx?|mjs|cjs)?$/,
+        test: /\.(jsx?|mjs)?$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -21,7 +21,7 @@ module.exports = {
     path: resolve(__dirname, './public/static/')
   },
   resolve: {
-    extensions: ['.js', '.json', '.jsx', '.css']
+    extensions: ['.js', '.json', '.wasm', '.jsx'] // Default of Webpack 5 plus JSX
   },
   target: 'web'
 };
