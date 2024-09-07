@@ -10,7 +10,7 @@ window.WebChat.customizations = {
     const token = await fetchDirectLineAppServiceExtensionToken();
 
     const directLine = await createDirectLineAppServiceExtension({
-      domain: 'https://webchat-mockbot3.azurewebsites.net/.bot/v3/directline',
+      domain: 'https://hawo-mockbot4-bot-app.azurewebsites.net/.bot/v3/directline',
       token
     });
 

@@ -6,6 +6,10 @@
 
 <button class="customization" data-name="" type="button">Remove all customizations</button>
 
+### Features shipped in 4.19.0
+
+<button class="customization" data-name="copilot-theme" type="button">(Experimental) Copilot skin pack</button>
+
 ### Features shipped in 4.17.0
 
 <button class="customization" data-name="fluent-theme" type="button">(Experimental) Fluent skin pack</button>

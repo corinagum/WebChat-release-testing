@@ -5,7 +5,7 @@ function createFetchDirectLineSpeechCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://webchat-mockbot-streaming.azurewebsites.net/speechservices/token', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speechservices', { method: 'POST' })
         .then(res => res.json())
         .then(({ region, token }) => ({ authorizationToken: token, region }))
         .catch(err => {
@@ -27,7 +27,7 @@ function createFetchSpeechServicesCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speechservices', { method: 'POST' })
         .then(res => res.json())
         .catch(err => {
           expireAfter = 0;
@@ -47,13 +47,13 @@ window.createFetchTokens = () => {
 
   return {
     fetchDirectLineToken: async () => {
-      const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', { method: 'POST' });
+      const res = await fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/directline', { method: 'POST' });
       const { token } = await res.json();
 
       return token;
     },
     fetchDirectLineAppServiceExtensionToken: async () => {
-      const res = await fetch('https://webchat-mockbot3.azurewebsites.net/api/token/directlinease', { method: 'POST' });
+      const res = await fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/directlinease', { method: 'POST' });
       const { token } = await res.json();
 
       return token;

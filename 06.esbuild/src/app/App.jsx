@@ -15,7 +15,7 @@ function createFetchSpeechServicesCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://webchat-mockbot.azurewebsites.net/speechservices/token', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speechservices', { method: 'POST' })
         .then(res => res.json())
         .catch(err => {
           expireAfter = 0;
@@ -42,7 +42,7 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('https://webchat-mockbot.azurewebsites.net/directline/token', {
+      const res = await fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/directline', {
         method: 'POST'
       });
 
@@ -89,6 +89,10 @@ export default function App() {
       <div id="webchat">
         {window.WebChat.customizations.theme === 'fluent' ? (
           <FluentThemeProvider>
+            <ReactWebChat {...props} />
+          </FluentThemeProvider>
+        ) : window.WebChat.customizations.theme === 'copilot' ? (
+          <FluentThemeProvider variant="copilot">
             <ReactWebChat {...props} />
           </FluentThemeProvider>
         ) : (
