@@ -8,7 +8,13 @@ const whitelistedPackages = [
   'micromark-util-sanitize-uri',
   'microsoft-cognitiveservices-speech-sdk',
   'mime',
-  'valibot'
+  'valibot',
+
+  // Also transpile Web Chat.
+  'botframework-webchat-api',
+  'botframework-webchat-component',
+  'botframework-webchat-core',
+  'botframework-webchat'
 ];
 
 // TODO: Verify problematic build again (4.18.1-main.20241008.4880020).
@@ -21,20 +27,19 @@ module.exports = {
         test: /\.(jsx?|mjs)$/,
         include: [
           resolve(__dirname, 'src'),
-          // TODO: Use RegExp and add escape RegExp.
           ...whitelistedPackages.map(packageName => resolve(__dirname, 'node_modules', packageName))
         ],
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', '@babel/preset-env']
+            presets: ['@babel/preset-react', ['@babel/preset-env', { modules: 'commonjs' }]]
           }
         }
       }
     ]
   },
   optimization: {
-    minimize: true
+    minimize: true,
   },
   output: {
     filename: 'js/bundle.js',
