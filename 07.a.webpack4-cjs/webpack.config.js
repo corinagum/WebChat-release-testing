@@ -1,5 +1,4 @@
 const { resolve } = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
 
 const whitelistedPackages = [
   'botframework-webchat-fluent-theme',
@@ -13,15 +12,15 @@ const whitelistedPackages = [
 ];
 
 module.exports = {
-  amd: { jQuery: true },
   entry: './src/index.js',
   mode: 'production',
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.(jsx?|mjs)$/,
         include: [
           resolve(__dirname, 'src'),
+          // TODO: Use RegExp and add escape RegExp.
           ...whitelistedPackages.map(packageName => resolve(__dirname, 'node_modules', packageName))
         ],
         use: {
@@ -34,8 +33,7 @@ module.exports = {
     ]
   },
   optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()]
+    minimize: true
   },
   output: {
     filename: 'js/bundle.js',
