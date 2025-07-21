@@ -13,9 +13,9 @@ cat package.json | jq -r '. | .dependencies = (.dependencies | delpaths([
   ["botframework-webchat"]
 ]))' > package.json.tmp && mv package.json.tmp package.json
 
-npm install `ls ../drops/botframework-webchat-core-*.tgz`
-npm install `ls ../drops/botframework-webchat-api-*.tgz`
-npm install `ls ../drops/botframework-webchat-component-*.tgz`
-npm install `ls ../drops/botframework-directlinespeech-sdk-*.tgz`
-npm install `ls ../drops/botframework-webchat-fluent-theme-*.tgz`
-npm install `ls ../drops/botframework-webchat-*.tgz`
+npm install ../drops/botframework-webchat-core-0.0.0-0.tgz
+npm install ../drops/botframework-webchat-api-0.0.0-0.tgz
+npm install ../drops/botframework-webchat-component-0.0.0-0.tgz
+npm install ../drops/botframework-directlinespeech-sdk-0.0.0-0.tgz
+npm install ../drops/botframework-webchat-fluent-theme-0.0.0-0.tgz
+npm install ../drops/botframework-webchat-0.0.0-0.tgz
