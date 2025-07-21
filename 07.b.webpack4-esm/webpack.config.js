@@ -32,14 +32,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react', ['@babel/preset-env', { modules: 'commonjs' }]]
+            // It was set to "commonjs" but never work on 4.18.0.
+            presets: ['@babel/preset-react', ['@babel/preset-env', { modules: 'auto' }]]
           }
         }
       }
     ]
   },
   optimization: {
-    minimize: true,
+    minimize: true
   },
   output: {
     filename: 'js/bundle.js',
