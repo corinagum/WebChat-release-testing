@@ -29,7 +29,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const init = async () => {
-  if (!window.WebChat.loadCustomization && !window.WebChat.renderCheatSheet) {
+  if (!window.WebChat || !window.WebChat.loadCustomization || !window.WebChat.renderCheatSheet) {
     return setTimeout(init, 100);
   }
 
