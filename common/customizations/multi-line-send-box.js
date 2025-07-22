@@ -7,8 +7,8 @@ const search = parts.reduce((search, part) => {
   return search;
 }, {});
 
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   patchProps: props => ({
     ...props,
     styleOptions: {

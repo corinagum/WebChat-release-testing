@@ -1,5 +1,5 @@
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   createDirectLineMiddleware: () => next => options =>
     next({
       token: 'invalid-token'

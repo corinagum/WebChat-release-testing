@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 const init = async () => {
-  const { WebChat } = window;
+  const { WebChatReleaseTesting } = window;
 
-  if (!WebChat.loadCustomization && !WebChat.renderCheatSheet) {
+  if (!WebChatReleaseTesting || !WebChatReleaseTesting.loadCustomization || !WebChatReleaseTesting.renderCheatSheet) {
     setTimeout(init, 100);
 
     return;
   }
 
-  await WebChat.loadCustomization();
-  await WebChat.renderCheatSheet();
+  await WebChatReleaseTesting.loadCustomization();
+  await WebChatReleaseTesting.renderCheatSheet();
 
   ReactDOM.render(<App />, document.getElementsByTagName('main')[0]);
 };

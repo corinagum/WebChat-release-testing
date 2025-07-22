@@ -48,7 +48,7 @@ export default function App() {
       });
 
       const { token } = await res.json();
-      const { createDirectLineMiddleware } = window.WebChat.customizations;
+      const { createDirectLineMiddleware } = window.WebChatReleaseTesting.customizations;
 
       setDirectLine(
         (createDirectLineMiddleware ? createDirectLineMiddleware()(createDirectLine) : createDirectLine)({
@@ -74,7 +74,7 @@ export default function App() {
     (async function () {
       if (directLine && store && webSpeechPonyfillFactory) {
         setProps(
-          await window.WebChat.customizations.patchProps({
+          await window.WebChatReleaseTesting.customizations.patchProps({
             directLine,
             locale: 'en-US',
             store,
@@ -88,11 +88,11 @@ export default function App() {
   return (
     !!props && (
       <div id="webchat">
-        {window.WebChat.customizations.theme === 'fluent' ? (
+        {window.WebChatReleaseTesting.customizations.theme === 'fluent' ? (
           <FluentThemeProvider>
             <ReactWebChat {...props} />
           </FluentThemeProvider>
-        ) : window.WebChat.customizations.theme === 'copilot' ? (
+        ) : window.WebChatReleaseTesting.customizations.theme === 'copilot' ? (
           <FluentThemeProvider variant="copilot">
             <ReactWebChat {...props} />
           </FluentThemeProvider>

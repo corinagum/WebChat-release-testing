@@ -78,8 +78,8 @@ async function loadScript(src) {
   });
 }
 
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   patchProps: async props => {
     const directLine = await directLineWithMiddleware(props.directLine, () => next => activity => {
       if (!~(activity.text || '').indexOf('send failed')) {

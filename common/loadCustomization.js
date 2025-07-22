@@ -1,4 +1,4 @@
-window.WebChat || (window.WebChat = {});
+window.WebChatReleaseTesting || (window.WebChatReleaseTesting = {});
 
 (() => {
   const parts = document.location.search.replace(/^\?/, '').split('&');
@@ -10,11 +10,11 @@ window.WebChat || (window.WebChat = {});
     return search;
   }, {});
 
-  window.WebChat.customizationName = search.customization;
+  window.WebChatReleaseTesting.customizationName = search.customization;
 })();
 
 async function loadCustomization() {
-  const { customizationName } = window.WebChat;
+  const { customizationName } = window.WebChatReleaseTesting;
 
   if (!customizationName) {
     return;
@@ -35,5 +35,5 @@ async function loadScript(src) {
   eval(Babel.transform(code, { presets: ['es2015', 'stage-3'] }).code);
 }
 
-window.WebChat.customizations = { createDirectLineMiddleware: () => next => options => next(options), patchProps: props => props };
-window.WebChat.loadCustomization = loadCustomization;
+window.WebChatReleaseTesting.customizations = { createDirectLineMiddleware: () => next => options => next(options), patchProps: props => props };
+window.WebChatReleaseTesting.loadCustomization = loadCustomization;

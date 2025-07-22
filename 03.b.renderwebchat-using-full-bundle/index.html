@@ -46,10 +46,10 @@
       } = window;
 
       async function main() {
-        await window.WebChat.loadCustomization();
-        await window.WebChat.renderCheatSheet();
+        await window.WebChatReleaseTesting.loadCustomization();
+        await window.WebChatReleaseTesting.renderCheatSheet();
 
-        const { createDirectLineMiddleware, patchProps } = window.WebChat.customizations;
+        const { createDirectLineMiddleware, patchProps } = window.WebChatReleaseTesting.customizations;
         const directLine = (createDirectLineMiddleware
           ? createDirectLineMiddleware()(createDirectLine)
           : createDirectLine)({ token: await fetchDirectLineToken() });

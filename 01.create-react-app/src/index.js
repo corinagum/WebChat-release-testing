@@ -29,12 +29,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const init = async () => {
-  if (!window.WebChat || !window.WebChat.loadCustomization || !window.WebChat.renderCheatSheet) {
+  if (!window.WebChatReleaseTesting || !window.WebChatReleaseTesting.loadCustomization || !window.WebChatReleaseTesting.renderCheatSheet) {
     return setTimeout(init, 100);
   }
 
-  await window.WebChat.loadCustomization();
-  await window.WebChat.renderCheatSheet();
+  await window.WebChatReleaseTesting.loadCustomization();
+  await window.WebChatReleaseTesting.renderCheatSheet();
 
   ReactDOM.render(<App />, document.getElementById('root'));
 };

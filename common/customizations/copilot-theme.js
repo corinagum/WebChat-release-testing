@@ -1,4 +1,4 @@
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   theme: 'copilot'
 };

@@ -4,16 +4,16 @@ import App from './App';
 import './index.css';
 
 const init = async (): Promise<void> => {
-  const { WebChat } = window as unknown as { WebChat: any };
+  const { WebChatReleaseTesting } = window as unknown as { WebChatReleaseTesting: any };
 
-  if (!WebChat.loadCustomization && !WebChat.renderCheatSheet) {
+  if (!WebChatReleaseTesting || !WebChatReleaseTesting.loadCustomization || !WebChatReleaseTesting.renderCheatSheet) {
     setTimeout(init, 100);
 
     return;
   }
 
-  await WebChat.loadCustomization();
-  await WebChat.renderCheatSheet();
+  await WebChatReleaseTesting.loadCustomization();
+  await WebChatReleaseTesting.renderCheatSheet();
 
   ReactDOM.render(<App />, document.getElementsByTagName('main')[0]);
 };

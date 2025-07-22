@@ -64,8 +64,8 @@ const directLine = window.createDirectLineWithTranscript([
   }
 ]);
 
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   createDirectLineMiddleware: () => () => () => directLine,
   patchProps: props => ({
     ...props,

@@ -1,6 +1,6 @@
 if (!window.React) {
-  window.WebChat.customizations = {
-    ...window.WebChat.customizations,
+  window.WebChatReleaseTesting.customizations = {
+    ...window.WebChatReleaseTesting.customizations,
     patchProps: props => ({
       ...props,
       store: window.WebChat.createStore({}, ({ dispatch }) => {
@@ -33,8 +33,8 @@ if (!window.React) {
     });
   };
 
-  window.WebChat.customizations = {
-    ...window.WebChat.customizations,
+  window.WebChatReleaseTesting.customizations = {
+    ...window.WebChatReleaseTesting.customizations,
     patchProps: props => ({
       ...props,
       avatarMiddleware:

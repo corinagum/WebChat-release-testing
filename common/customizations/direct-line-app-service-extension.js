@@ -4,8 +4,8 @@ const {
 
 const { fetchDirectLineAppServiceExtensionToken } = window.createFetchTokens();
 
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   patchProps: async props => {
     const token = await fetchDirectLineAppServiceExtensionToken();
 
