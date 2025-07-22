@@ -46,7 +46,7 @@ export default function App() {
       });
 
       const { token } = await res.json();
-      const { createDirectLineMiddleware } = window.WebChat.customizations;
+      const { createDirectLineMiddleware } = window.WebChatReleaseTesting.customizations;
 
       setDirectLine(
         (createDirectLineMiddleware ? createDirectLineMiddleware()(createDirectLine) : createDirectLine)({
@@ -72,7 +72,7 @@ export default function App() {
     (async function() {
       if (directLine && store && webSpeechPonyfillFactory) {
         setProps(
-          await window.WebChat.customizations.patchProps({
+          await window.WebChatReleaseTesting.customizations.patchProps({
             directLine,
             locale: 'en-US',
             store,
