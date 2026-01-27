@@ -5,7 +5,7 @@ function createFetchDirectLineSpeechCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speechservices', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
         .then(res => res.json())
         .then(({ region, token }) => ({ authorizationToken: token, region }))
         .catch(err => {
@@ -27,8 +27,9 @@ function createFetchSpeechServicesCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speechservices', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.blueriver-ce85e8f0.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
         .then(res => res.json())
+        .then(({ region, token }) => ({ authorizationToken: `Bearer ${token}`, region }))
         .catch(err => {
           expireAfter = 0;
           resultPromise = null;

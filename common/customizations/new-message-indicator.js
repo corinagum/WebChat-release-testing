@@ -1,5 +1,5 @@
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   patchProps: props => ({
     ...props,
     overrideLocalizedStrings: strings => ({

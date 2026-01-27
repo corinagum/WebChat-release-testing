@@ -37,24 +37,6 @@ object-assign
  * Released under the MIT License.
  */
 
-/*! For license information please see botframework-directlinespeech-sdk.mjs.LEGAL.txt */
-
-/*! For license information please see botframework-webchat-api.decorator.mjs.LEGAL.txt */
-
-/*! For license information please see botframework-webchat-api.internal.mjs.LEGAL.txt */
-
-/*! For license information please see botframework-webchat-component.decorator.mjs.LEGAL.txt */
-
-/*! For license information please see botframework-webchat-core.mjs.LEGAL.txt */
-
-/*! For license information please see chunk-2S76JUVM.mjs.LEGAL.txt */
-
-/*! For license information please see chunk-MT3UE4GZ.mjs.LEGAL.txt */
-
-/*! For license information please see chunk-NAADFVDP.mjs.LEGAL.txt */
-
-/*! For license information please see chunk-WUMYXYXS.mjs.LEGAL.txt */
-
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
@@ -68,13 +50,6 @@ object-assign
  * @licence MIT
  *
  */
-
-/**
- * Fast UUID generator, RFC4122 version 4 compliant.
- * @author Jeff Ward (jcward.com).
- * @license MIT license
- * @link http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/21963136#21963136
- **/
 
 /** @license React v0.13.6
  * scheduler.production.min.js

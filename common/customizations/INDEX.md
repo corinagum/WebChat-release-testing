@@ -9,6 +9,7 @@
 ### Features shipped in 4.19.0
 
 <button class="customization" data-name="copilot-theme" type="button">(Experimental) Copilot skin pack</button>
+<button class="customization" data-name="continuous-speech" type="button">Continuous speech</button>
 
 ### Features shipped in 4.17.0
 

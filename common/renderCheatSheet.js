@@ -128,12 +128,12 @@ async function fetchMarkdown(url) {
   return await res.text();
 }
 
-window.WebChat.renderCheatSheet = async ({ contentDocument = document } = {}) => {
+window.WebChatReleaseTesting.renderCheatSheet = async ({ contentDocument = document } = {}) => {
   const container = document.createElement('div');
   const content = document.createElement('div');
   const readmeMarkdown = await fetchMarkdown('README.md');
   const customizationsMarkdown = await fetchMarkdown('../common/customizations/INDEX.md');
-  const { customizationName } = window.WebChat;
+  const { customizationName } = window.WebChatReleaseTesting;
   const stepsMarkdown = await fetchMarkdown(
     customizationName ? `../common/customizations/${customizationName}.md` : 'STEPS.md'
   );

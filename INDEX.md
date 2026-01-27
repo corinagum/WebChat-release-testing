@@ -87,9 +87,17 @@ Using Web Chat bundled by ESBuild.
 const App = () => <ReactWebChat ... />;
 ```
 
-## [07.webpack4](/WebChat-release-testing/07.webpack4/index.html)
+## [07.a.webpack4-cjs](/WebChat-release-testing/07.a.webpack4-cjs/index.html)
 
-Using Web Chat bundled by Webpack 4.
+Using Web Chat bundled by Webpack 4 in CJS.
+
+```jsx
+const App = () => <ReactWebChat ... />;
+```
+
+## [07.b.webpack4-esm](/WebChat-release-testing/07.b.webpack4-esm/index.html)
+
+Using Web Chat bundled by Webpack 4 in ESM.
 
 ```jsx
 const App = () => <ReactWebChat ... />;

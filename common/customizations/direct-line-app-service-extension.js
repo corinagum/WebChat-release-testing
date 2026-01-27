@@ -4,13 +4,13 @@ const {
 
 const { fetchDirectLineAppServiceExtensionToken } = window.createFetchTokens();
 
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   patchProps: async props => {
     const token = await fetchDirectLineAppServiceExtensionToken();
 
     const directLine = await createDirectLineAppServiceExtension({
-      domain: 'https://hawo-mockbot4-bot-app.azurewebsites.net/.bot/v3/directline',
+      domain: 'https://hawo-mockbot4-mock-bot-app.azurewebsites.net/.bot/v3/directline',
       token
     });
 

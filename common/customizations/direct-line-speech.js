@@ -4,8 +4,8 @@ const {
 
 const { fetchDirectLineSpeechCredentials } = window.createFetchTokens();
 
-window.WebChat.customizations = {
-  ...window.WebChat.customizations,
+window.WebChatReleaseTesting.customizations = {
+  ...window.WebChatReleaseTesting.customizations,
   patchProps: async props => {
     const adapters = await createDirectLineSpeechAdapters({ fetchCredentials: fetchDirectLineSpeechCredentials });
 
