@@ -8,6 +8,8 @@ import ReactWebChat, {
   createStore
 } from 'botframework-webchat';
 
+import { FluentThemeProvider } from 'botframework-webchat-fluent-theme';
+
 window.WebChat = {
   createDirectLineAppServiceExtension,
   createDirectLineSpeechAdapters,
@@ -101,7 +103,17 @@ export default function App() {
   return (
     !!props && (
       <div id="webchat">
-        <ReactWebChat {...props} />
+        {window.WebChatReleaseTesting.customizations.theme === 'fluent' ? (
+          <FluentThemeProvider>
+            <ReactWebChat {...props} />
+          </FluentThemeProvider>
+        ) : window.WebChatReleaseTesting.customizations.theme === 'copilot' ? (
+          <FluentThemeProvider variant="copilot">
+            <ReactWebChat {...props} />
+          </FluentThemeProvider>
+        ) : (
+          <ReactWebChat {...props} />
+        )}
       </div>
     )
   );
