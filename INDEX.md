@@ -71,14 +71,6 @@ Using Web Chat with `renderWebChat` with some JSX.
 </script>
 ```
 
-## [05.cdc](05.cdc/index.html)
-
-Using Web Chat hosted like CDC.
-
-```html
-<iframe src="cdc.html"></iframe>
-```
-
 ## [06.esbuild](/WebChat-release-testing/06.esbuild/index.html)
 
 Using Web Chat bundled by ESBuild.
