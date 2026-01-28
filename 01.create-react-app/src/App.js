@@ -3,8 +3,17 @@ import React, { useEffect, useState } from 'react';
 import ReactWebChat, {
   createCognitiveServicesSpeechServicesPonyfillFactory,
   createDirectLine,
+  createDirectLineAppServiceExtension,
+  createDirectLineSpeechAdapters,
   createStore
 } from 'botframework-webchat';
+
+window.WebChat = {
+  createDirectLineAppServiceExtension,
+  createDirectLineSpeechAdapters,
+  createStore,
+  ...window.WebChat
+};
 
 function createFetchSpeechServicesCredentials() {
   let expireAfter = 0;
@@ -13,7 +22,10 @@ function createFetchSpeechServicesCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
+      resultPromise = fetch(
+        'https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/speech/msi',
+        { method: 'POST' }
+      )
         .then(res => res.json())
         .then(({ region, token }) => ({ authorizationToken: `Bearer ${token}`, region }))
         .catch(err => {
@@ -41,9 +53,12 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/directline', {
-        method: 'POST'
-      });
+      const res = await fetch(
+        'https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/directline',
+        {
+          method: 'POST'
+        }
+      );
 
       const { token } = await res.json();
       const { createDirectLineMiddleware } = window.WebChatReleaseTesting.customizations;
@@ -69,7 +84,7 @@ export default function App() {
   const [props, setProps] = useState();
 
   useEffect(() => {
-    (async function() {
+    (async function () {
       if (directLine && store && webSpeechPonyfillFactory) {
         setProps(
           await window.WebChatReleaseTesting.customizations.patchProps({
