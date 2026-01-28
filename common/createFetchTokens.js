@@ -5,7 +5,7 @@ function createFetchDirectLineSpeechCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
         .then(res => res.json())
         .then(({ region, token }) => ({ authorizationToken: token, region }))
         .catch(err => {
@@ -27,7 +27,7 @@ function createFetchSpeechServicesCredentials() {
   return () => {
     if (!resultPromise || Date.now() > expireAfter) {
       expireAfter = Date.now() + 5000;
-      resultPromise = fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
+      resultPromise = fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/speech/msi', { method: 'POST' })
         .then(res => res.json())
         .then(({ region, token }) => ({ authorizationToken: `Bearer ${token}`, region }))
         .catch(err => {
@@ -48,13 +48,13 @@ window.createFetchTokens = () => {
 
   return {
     fetchDirectLineToken: async () => {
-      const res = await fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/directline', { method: 'POST' });
+      const res = await fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/directline', { method: 'POST' });
       const { token } = await res.json();
 
       return token;
     },
     fetchDirectLineAppServiceExtensionToken: async () => {
-      const res = await fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfdhawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/directlinease', { method: 'POST' });
+      const res = await fetch('https://hawo-mockbot4-token-app.ambitiousflower-67725bfd.westus.azurecontainerapps.io/api/token/directlinease', { method: 'POST' });
       const { token } = await res.json();
 
       return token;
