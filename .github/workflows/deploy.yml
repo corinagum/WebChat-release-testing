@@ -61,7 +61,7 @@ jobs:
           node-version: 24
 
       - name: Download tarball
-        use: actions/download-artifact@v7
+        uses: actions/download-artifact@v7
         with:
           name: tarball
           path: drops/
