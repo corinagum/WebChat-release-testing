@@ -40,7 +40,7 @@ jobs:
   build:
     name: Build
     needs:
-      - download-tarballs
+      - download-tarball
     runs-on: ubuntu-latest
     strategy:
       matrix:
