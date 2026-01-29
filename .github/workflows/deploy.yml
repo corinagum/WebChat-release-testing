@@ -75,7 +75,7 @@ jobs:
       - run: npm run build
         working-directory: ${{ matrix.buildable }}
 
-      - run: Upload artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
           if-no-files-found: error
