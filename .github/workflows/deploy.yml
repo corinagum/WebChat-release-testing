@@ -1,0 +1,106 @@
+name: '🚀 [Azure] Build and deploy'
+
+# Secrets used in this GitHub workflow:
+# - GH_TOKEN_READ_PACKAGES
+# Vars used in this GitHub workflow:
+# - BUILDER_CLIENT_ID
+# - GH_USERNAME_READ_PACKAGES
+# - RESOURCE_GROUP_NAME
+# - SUBSCRIPTION_ID
+# - TENANT_ID
+
+on:
+  push:
+    branches: ['main']
+  schedule:
+    - cron: '0 4 * * 6'
+  workflow_dispatch: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  download-tarball:
+    name: Download
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - run: ./download-main.sh
+        working-directory: drops
+
+      - name: Upload tarballs
+        uses: actions/upload-artifact@v6
+        with:
+          if-no-files-found: error
+          name: tarball
+          path: |
+            drops/
+            !drops/.gitignore
+            !drops/*.sh
+
+  build:
+    name: Build
+    needs:
+      - download-tarballs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        buildable:
+          - 01.create-react-app
+          - 06.esbuild
+          - 07.a.webpack4-cjs
+          - 07.b.webpack4-esm
+          - 08.webpack5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Download tarball
+        use: actions/download-artifact@v7
+        with:
+          name: tarball
+          path: drops/
+
+      - run: npm clean-install
+        working-directory: ${{ matrix.buildable }}
+
+      - run: ./install-drops.sh
+        working-directory: ${{ matrix.buildable }}
+
+      - run: npm run build
+        working-directory: ${{ matrix.buildable }}
+
+      - run: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          if-no-files-found: error
+          name: build-${{ matrix.buildable }}
+          path: |
+            ${{ matrix.buildable }}/${{ matrix.buildable == '01.create-react-app' && 'build' || 'public' }}
+
+  # build-pages:
+  #   needs:
+  #     - build-pages
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+
+  #     - name: Download artifacts
+  #       uses: actions/download-artifact@v7
+  #       with:
