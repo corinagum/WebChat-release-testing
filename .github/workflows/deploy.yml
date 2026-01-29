@@ -1,13 +1,4 @@
-name: '🚀 [Azure] Build and deploy'
-
-# Secrets used in this GitHub workflow:
-# - GH_TOKEN_READ_PACKAGES
-# Vars used in this GitHub workflow:
-# - BUILDER_CLIENT_ID
-# - GH_USERNAME_READ_PACKAGES
-# - RESOURCE_GROUP_NAME
-# - SUBSCRIPTION_ID
-# - TENANT_ID
+name: '🚀 Build and deploy'
 
 on:
   push:
